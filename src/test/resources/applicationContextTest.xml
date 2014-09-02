@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd 
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd">
+
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="${database.driver}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+	</bean>
+
+
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan" value="com.nisum.ncms.model" />
+		<property name="hibernateProperties">
+			<props>
+		         <prop key="hibernate.dialect">${hb.dialect}</prop>
+		         <prop key="hibernate.show_sql">${hb.showsql}</prop>
+		         <prop key="hibernate.hbm2ddl.auto">${hb.hbm2ddl.auto}</prop>
+		         <prop key="hibernate.connection.url">${hb.connection.url}</prop>
+		         <prop key="hibernate.connection.driver_class">${hb.connection.driver_class}</prop>
+		         <prop key="hibernate.connection.username">${hb.connection.username}</prop>
+		         <prop key="hibernate.connection.password">${hb.connection.password}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<context:component-scan base-package="com.nisum.ncms.services" />
+	
+	<context:component-scan base-package="com.nisum.ncms.dao" use-default-filters="false">
+		<context:include-filter expression="org.springframework.stereotype.Repository"  type="annotation"/>
+	</context:component-scan>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:database_test.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

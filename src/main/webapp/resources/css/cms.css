@@ -1,0 +1,282 @@
+body, html {
+	height: 100%;
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+h1{
+	text-align:center;
+	font-size:20pt;
+}
+
+p1{
+	text-align:center;
+	font-size:15px;
+	padding: 10%;
+}
+
+
+
+.lead {
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.intro-message {
+	float: right;
+	padding-bottom: 20%;
+}
+
+.intro-message > h2 {
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.intro-divider {
+	width: 180px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.intro-message > h3 {
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 767px) {
+	.intro-message {
+		padding-bottom: 15%;
+	}
+
+	.intro-message > h1 {
+		font-size: 3em;
+	}
+
+	.intro-divider {
+		width: 100%;
+	}
+}
+
+
+footer {
+	background-color: #f8f8f8;
+}
+
+p.copyright {
+	margin: 15px 0 0;
+}
+  	
+  	.intro-header {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: rgb(248, 248, 248);
+    background: url("<c:url value="/resources/images/Beach-Vacations-Seychelles.jpg"/>") no-repeat center center / cover transparent;
+    background-size: cover;
+    text-align: center;
+}
+
+.content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.gradientBoxesWithOuterShadows { 
+/* padding: 20px; */
+margin-right:0%;
+margin-left:0%;
+padding-left:15px;
+/* margin-top:70px; */
+background-color: white; 
+
+/* outer shadows  (note the rgba is red, green, blue, alpha) */
+-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+
+/* rounded corners */
+-webkit-border-radius: 12px;
+-moz-border-radius: 7px; 
+border-radius: 7px;
+
+/* gradients */
+/*background: #FFFFFF;
+/*background: -webkit-gradient(linear, left top, left bottom, 
+color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5)); 
+background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%);*/ 
+}
+
+
+.gradientBoxesWithOuterShadows2 { 
+/* padding: 20px; */
+margin-right:0%;
+margin-left:0%;
+padding-left:15px;
+padding-top:24px;
+/* margin-top:70px; */
+background-color: white; 
+
+/* outer shadows  (note the rgba is red, green, blue, alpha) */
+-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+
+/* rounded corners */
+-webkit-border-radius: 12px;
+-moz-border-radius: 7px; 
+border-radius: 7px;
+
+/* gradients */
+/* background: -webkit-gradient(linear, left top, left bottom, 
+color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5)); 
+background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%);  */
+}
+
+
+/*Grid settings*/
+
+.additional_element {
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.grid_elements {
+    width: 300px;
+    float: left;
+}
+.grid_elements table {
+    border-collapse: separate;
+    width: 200px;
+    height: 200px;
+}
+.actions_block {
+    padding: 9px;
+    float: right
+}
+
+.grid_elements table td {
+    background-color: #CFCFCF;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+.grid_elements table td.hover {
+    background-color: #999;
+}
+
+.grid_elements table td:hover {
+    cursor: pointer;
+}
+
+.layout_block .block_name {
+    cursor: pointer;
+}
+
+.ui-resizable-resizing {
+    z-index: 9999999 !important;
+}
+
+.layout_name_edit {
+    background-color: inherit;
+    background: url( '../media/images/icons/edit_input.gif' );
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    padding: 0px;
+    margin: 0px;
+    padding-left: 14px;
+    border: none;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    outline: none;
+    width: 90%;
+    font-style: italic;
+    cursor: text !important;
+}
+.layouts_grid .remove_element {
+    float: right;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    margin: 3px 0px 4px 4px;
+}
+.layouts_grid .layout_block .info {
+    color: black;
+    font-size: 16px;
+    font-family: Helvetica;
+    padding: 10px;
+}
+/*! gridster.js - v0.1.0 - 2012-10-07
+* http://gridster.net/
+* Copyright (c) 2012 ducksboard; Licensed MIT */
+
+.layouts_grid {
+    position:relative !important;
+    width: 100%;
+    min-height: 300px;
+    float: left;
+}
+
+.layouts_grid > * {
+    margin: 0 auto;
+    -webkit-transition: height .4s;
+    -moz-transition: height .4s;
+    -o-transition: height .4s;
+    -ms-transition: height .4s;
+    transition: height .4s;
+}
+
+.layouts_grid ul {
+    list-style-type: none;
+    min-height: 660px; 
+}
+.layouts_grid .gs_w{
+    z-index: 2;
+    position: absolute;
+}
+
+.ready .gs_w:not(.preview-holder) {
+    -webkit-transition: opacity .3s, left .3s, top .3s;
+    -moz-transition: opacity .3s, left .3s, top .3s;
+    -o-transition: opacity .3s, left .3s, top .3s;
+    transition: opacity .3s, left .3s, top .3s;
+}
+
+.ready .gs_w:not(.preview-holder) {
+    -webkit-transition: opacity .3s, left .3s, top .3s, width .3s, height .3s;
+    -moz-transition: opacity .3s, left .3s, top .3s, width .3s, height .3s;
+    -o-transition: opacity .3s, left .3s, top .3s, width .3s, height .3s;
+    transition: opacity .3s, left .3s, top .3s, width .3s, height .3s;
+}
+
+.layouts_grid .preview-holder {
+    z-index: 1;
+    position: absolute;
+    background-color: inherit;
+    border: none;
+    opacity: 0.3;
+}
+
+.layouts_grid .player-revert {
+    z-index: 10!important;
+    -webkit-transition: left .3s, top .3s!important;
+    -moz-transition: left .3s, top .3s!important;
+    -o-transition: left .3s, top .3s!important;
+    transition:  left .3s, top .3s!important;
+}
+
+.layouts_grid .dragging {
+    z-index: 10!important;
+    -webkit-transition: all 0s !important;
+    -moz-transition: all 0s !important;
+    -o-transition: all 0s !important;
+    transition: all 0s !important;
+}
+
+/* Uncomment this if you set helper : "clone" in draggable options */
+/*.layouts_grid .player {
+  opacity:0;
+}*/
