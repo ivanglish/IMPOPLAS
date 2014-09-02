@@ -11,12 +11,29 @@
        http://www.springframework.org/schema/task
        http://www.springframework.org/schema/task/spring-task.xsd">
        
+    <bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+    
+    <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<!-- <property name="maxUploadSize" value="10000000" /> -->
+	</bean>
+	
        
  	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/impoplas" />
 		<property name="username" value="root" />
-		<property name="password" value="Guevarax9" />
+		<property name="password" value="admin" />
 	</bean>
 
 
@@ -32,7 +49,7 @@
 		         <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/impoplas</prop>
 		         <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
 		         <prop key="hibernate.connection.username">root</prop>
-		         <prop key="hibernate.connection.password">Guevarax9</prop>
+		         <prop key="hibernate.connection.password">admin</prop>
 			</props>
 		</property>
 	</bean>
