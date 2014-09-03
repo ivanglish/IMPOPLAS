@@ -44,6 +44,18 @@ public class ClienteController {
 	
     }	
 	
+	@RequestMapping(value = "/modifyCliente", method = RequestMethod.GET) 
+    public ModelAndView modifyCliente(@ModelAttribute("clienteModel")Cliente cliente)
+    {
+    	ModelAndView mav = new ModelAndView("modifyCliente"); 
+    	mav.addObject("clienteModel", cliente);
+		
+		return mav;
+	
+    }	
+	
+	
+	
 	@RequestMapping(value = "/saveCliente", method = RequestMethod.POST) 
     public String saveCliente(@ModelAttribute("clienteModel")Cliente cliente, Model model)
     {

@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html class="no-js" lang="en">
 <head>
-	<title>payasote!!</title>
+	<title>home</title>
 	<link href="<c:url value="/resources/bootstrap-3.0.3/css/bootstrap.min.css"/>" rel="stylesheet"/>
 	
 	<style>
@@ -55,7 +55,7 @@
 	    </div>
 	    <div class="row feature">
 	        <div class="col-xs-12 col-sm-4 cfeature infos">
-	            <a href="<c:url value="/saveCliente"/>">Modificar Cliente</a>
+	            <a href="<c:url value="/modifyCliente"/>">Modificar Cliente</a>
 	        </div>
 	        <div class="col-xs-12 col-sm-4 cfeature free">
 	            <a href="<c:url value="/addCliente"/>">Modificar Cotizacion</a>

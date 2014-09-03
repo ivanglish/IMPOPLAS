@@ -3,15 +3,28 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html class="no-js" lang="en">
 <head>
-	<title>Agregar Cliente</title>
+	<title>Modificar Cliente</title>
 	<link href="<c:url value="/resources/bootstrap-3.0.3/css/bootstrap.min.css"/>" rel="stylesheet"/>
 </head>
 	<body>
 	
 		<jsp:include page="header.jsp" />
+		
 		<div class="form-group" style="margin-top:65px;">
+		
+			<div class="input-append">
+			  <i class="icon-zoom-in"></i>
+			        <input data-provide="typeahead" data-items="4"  type="text" 
+			           class="span2 search-query">
+			        <button class="btn">Buscar Rut</button>
+			    </div>
+			
+		
+		</div>
+		
+		<div class="form-group">
 			<form:form class="form-horizontal" method="POST" modelAttribute="clienteModel" action="/IMPOPLAS/saveCliente">
-				<h2>Agregar Cliente</h2>
+				<h2>Modificar Cliente</h2>
 				<div class="form-group">
 						<label class="col-sm-2 control-label">Rut:</label>
 						<div class="col-sm-9">
