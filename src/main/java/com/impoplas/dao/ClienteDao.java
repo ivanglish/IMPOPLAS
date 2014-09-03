@@ -7,7 +7,7 @@ import com.impoplas.dao.interfaces.IClienteDao;
 import com.impoplas.model.Cliente;
 
 @Repository
-public class ClienteDao extends BaseDAOImpl implements IClienteDao{
+public class ClienteDao extends BaseDAOImpl<Cliente> implements IClienteDao{
 
 	public ClienteDao() {
 		super(Cliente.class);

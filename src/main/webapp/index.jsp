@@ -4,11 +4,26 @@
 <html class="no-js" lang="en">
 <head>
 	<title>Impoplas</title>
+	<link href="<c:url value="/resources/bootstrap-3.0.3/css/bootstrap.min.css"/>" rel="stylesheet"/>
 </head>
 	<body>
-		<h1>IMPOPLAS SYSTEM</h1>
-		<a href="<c:url value="/addCliente"/>">Agregar Cliente</a>
-		<a href="<c:url value="/saveCliente"/>">testing save Cliente</a>
+		
+		
+		
+		<form class="col-md-12" method="GET" action="/IMPOPLAS/login">
+		 		<div class="form-group">
+			        <h1>IMPOPLAS SYSTEM</h1>
+			    </div>
+			    <div class="form-group">
+			        <input type="text" class="form-control input-lg" placeholder="Usuario">
+			    </div>
+			    <div class="form-group">
+			        <input type="password" class="form-control input-lg" placeholder="Clave">
+			    </div>
+			    <div class="form-group">
+			        <button class="btn btn-primary btn-lg btn-block">Entrar</button>
+			    </div>
+		</form>
 
 	</body>
 </html>

@@ -7,21 +7,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img src="<c:url value="/resources/images/nisum-small.png"/>" class="navbar-brand" style="padding:2px;" height="49px"> 
+            <img src="<c:url value="/resources/images/logo-text.png"/>" class="navbar-brand" style="padding:2px;" height="49px"> 
         </div>
         <div class="navbar-collapse collapse">
 	        <ul class="nav navbar-nav">
-		        	<li><a href="<c:url value="/user"/>"><span class="glyphicon glyphicon-user"></span> User</a></li>
+		        	<li><a href="<c:url value="/user"/>"><span class="glyphicon glyphicon-user"></span> Cliente</a></li>
 		        	<c:if test="${currentUser.role.name == 'admin' }">
 		        		<li><a href="<c:url value="/admin"/>"><span class="glyphicon glyphicon-wrench"></span> Admin</a></li>
 		        	</c:if>
-		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Slideshow</a></li>
+		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Caja</a></li>
+		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Facturacion</a></li>
+		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Reportes</a></li>
+		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Cotizacion</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 						<c:choose>
-							<c:when test="${empty currentUser.email}">Guest User</c:when>
+							<c:when test="${empty currentUser.email}">Adminitrador</c:when>
 							<c:otherwise>${currentUser.email}</c:otherwise>
 						</c:choose> <b class="caret"></b></a>
 					<ul class="dropdown-menu">

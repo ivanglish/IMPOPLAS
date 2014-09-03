@@ -22,6 +22,16 @@ public class ClienteController {
 	public ClienteController() {
 		super();
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET) 
+    public ModelAndView login(@ModelAttribute("clienteModel")Cliente cliente)
+    {
+    	ModelAndView mav = new ModelAndView("home"); 
+    	mav.addObject("clienteModel", cliente);
+		
+		return mav;
+	
+    }	
 
 	@RequestMapping(value = "/addCliente", method = RequestMethod.GET) 
     public ModelAndView addCliente(@ModelAttribute("clienteModel")Cliente cliente)
