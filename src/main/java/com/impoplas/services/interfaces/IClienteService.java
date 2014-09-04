@@ -6,4 +6,6 @@ public interface IClienteService {
 	
 	public boolean saveCliente(Cliente c);
 
+	public Cliente getClienteByRut(String rut);
+
 }

@@ -52,7 +52,18 @@ public class ClienteController {
 		
 		return mav;
 	
-    }	
+    }
+	
+	@RequestMapping(value = "/buscaCliente", method = RequestMethod.GET) 
+    public ModelAndView buscaCliente(@ModelAttribute("clienteModel")Cliente cliente)
+    {
+		
+    	ModelAndView mav = new ModelAndView("modifyCliente"); 
+    	mav.addObject("clienteModel", cliService.getClienteByRut("7777"));
+		
+		return mav;
+	
+    }
 	
 	
 	

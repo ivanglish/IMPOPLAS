@@ -23,5 +23,4 @@ public class ClienteDao extends BaseDAOImpl<Cliente> implements IClienteDao{
 			return false;
 
 	}
-
 }

@@ -67,6 +67,14 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return (T) getSession().get(entity, id);
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    @Transactional
+    public T getById(Class<T> entity, final String id) {
+
+        return (T) getSession().get(entity, id);
+    }
+    
     protected SessionFactory getSessionFactory() {
         return sessionFactory;
     }

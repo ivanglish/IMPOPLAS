@@ -21,6 +21,13 @@ public class ClienteService implements IClienteService{
 		return cliDao.saveCliente(c);
 
 	}
+	
+	@Override
+	public Cliente getClienteByRut(String rut) {
+		return cliDao.getById(Cliente.class, rut);
+		
+	}
+	
 
 	public IClienteDao getCliDao() {
 		return cliDao;
@@ -29,6 +36,7 @@ public class ClienteService implements IClienteService{
 	public void setCliDao(IClienteDao cliDao) {
 		this.cliDao = cliDao;
 	}
+
 	
 	
 

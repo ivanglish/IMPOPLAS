@@ -14,4 +14,6 @@ public interface BaseDAO<T> {
     List<T> getAll();
     
     T getById(Class <T> entity, final Long id);
+
+	T getById(Class<T> entity, String id);
 }
