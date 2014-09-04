@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.impoplas.model.Cliente;
@@ -55,7 +56,7 @@ public class ClienteController {
     }
 	
 	@RequestMapping(value = "/buscaCliente", method = RequestMethod.GET) 
-    public ModelAndView buscaCliente(@ModelAttribute("clienteModel")Cliente cliente)
+    public ModelAndView buscaCliente(@RequestParam("buscarRut") String rut, @ModelAttribute("clienteModel")Cliente cliente)
     {
 		
     	ModelAndView mav = new ModelAndView("modifyCliente"); 
