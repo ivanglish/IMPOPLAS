@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html class="no-js" lang="en">
 <head>
-	<title>Modificar Cliente</title>
+	<title>Crear Cotizacion</title>
 	<link href="<c:url value="/resources/bootstrap-3.0.3/css/bootstrap.min.css"/>" rel="stylesheet"/>
 </head>
 	<body>
@@ -24,7 +24,7 @@
 		
 		<div class="form-group">
 			<form:form class="form-horizontal" method="POST" commandName ="clienteModel" action="/IMPOPLAS/saveCliente">
-				<h2>Modificar Cliente</h2>
+				<h2>Crear Cotizacion</h2>
 				<div class="form-group">
 						<label class="col-sm-2 control-label">Rut:</label>
 						<div class="col-sm-9">
@@ -86,6 +86,43 @@
 				</div>
 				<label title="${estado}"></label>
 			</form:form>
+			
+		    <div class="container">
+			    <div class="row feature">
+			        <div class="col-xs-12 col-sm-4 cfeature infos">
+			            <a href="<c:url value="/addCliente"/>">Cantidad</a>
+			        </div>
+			        <div class="col-xs-12 col-sm-4 cfeature free">
+			            <a href="<c:url value="/crearCotizacion"/>">Detalle</a>
+			        </div>
+			        <div class="col-xs-12 col-sm-4 cfeature standard">
+			            <a href="<c:url value="/addCliente"/>">Precio</a>
+			        </div>
+			        
+			        <div class="col-xs-12 col-sm-4 cfeature standard">
+			            <a href="<c:url value="/addCliente"/>">Total</a>
+			        </div>
+			    </div>
+			</div>
+			
+			<form:form class="form-horizontal" method="POST" modelAttribute ="detalle" action="/IMPOPLAS/addProduct">
+				<h2>Crear Cotizacion</h2>
+				<div class="form-group">
+						<label class="col-sm-2 control-label">Product:</label>
+						<div class="col-sm-9">
+							<form:input path="product" type="text" required="true"></form:input>
+						</div>
+				</div>
+				<div class="form-group">
+						<label class="col-sm-2 control-label">Cantidad</label>
+						<div class="col-sm-9">
+							<form:input path="cantidad" type="text" ></form:input>
+						</div>
+				</div>
+
+				
+			</form:form>
+			
 		</div>
 	</body>
 </html>

@@ -47,7 +47,7 @@
 	            <a href="<c:url value="/addCliente"/>">Agregar Cliente</a>
 	        </div>
 	        <div class="col-xs-12 col-sm-4 cfeature free">
-	            <a href="<c:url value="/addCliente"/>">Crear Cotizacion</a>
+	            <a href="<c:url value="/crearCotizacion"/>">Crear Cotizacion</a>
 	        </div>
 	        <div class="col-xs-12 col-sm-4 cfeature standard">
 	            <a href="<c:url value="/addCliente"/>">Factura</a>
