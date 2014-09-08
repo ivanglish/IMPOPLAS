@@ -56,11 +56,11 @@ public class ClienteController {
     }
 	
 	@RequestMapping(value = "/buscaCliente", method = RequestMethod.GET) 
-    public ModelAndView buscaCliente(@RequestParam("buscarRut") String rut, @ModelAttribute("clienteModel")Cliente cliente)
+    public ModelAndView buscaCliente(@RequestParam("rutBuscar") String rutBuscar)
     {
 		
     	ModelAndView mav = new ModelAndView("modifyCliente"); 
-    	mav.addObject("clienteModel", cliService.getClienteByRut("7777"));
+    	mav.addObject("clienteModel", cliService.getClienteByRut("8"));
 		
 		return mav;
 	
