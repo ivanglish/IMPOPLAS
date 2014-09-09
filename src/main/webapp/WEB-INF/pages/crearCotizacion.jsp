@@ -105,18 +105,18 @@
 			    </div>
 			</div>
 			
-			<form:form class="form-horizontal" method="POST" modelAttribute ="detalle" action="/IMPOPLAS/addProduct">
+			<form:form class="form-horizontal" method="POST" modelAttribute ="detalleModel" action="/IMPOPLAS/addProduct">
 				<h2>Crear Cotizacion</h2>
 				<div class="form-group">
 						<label class="col-sm-2 control-label">Product:</label>
 						<div class="col-sm-9">
-							<form:input path="product" type="text" required="true"></form:input>
+							<form:input path="medioPago" type="text" required="true"></form:input>
 						</div>
 				</div>
 				<div class="form-group">
 						<label class="col-sm-2 control-label">Cantidad</label>
 						<div class="col-sm-9">
-							<form:input path="cantidad" type="text" ></form:input>
+							<form:input path="observacion" type="text" ></form:input>
 						</div>
 				</div>
 
