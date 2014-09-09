@@ -3,12 +3,14 @@ package com.impoplas.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -27,9 +29,13 @@ public class Roles {
 	@Column(name = "rol", nullable = false)
 	private String rol;
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "role_permisos", joinColumns = { @JoinColumn(name = "id_role") }, inverseJoinColumns = { @JoinColumn(name = "id_permiso") })
+	private Set<Permisos> permisos = new HashSet<Permisos>();
 	
-	private Set<User> users = new HashSet<User>(0);
-
+	//@OneToMany(fetch = FetchType.LAZY)
+	//private Set<Permisos> permisos = new HashSet<Permisos>();
+	
 
 	public long getIdRoles() {
 		return idRoles;
@@ -37,23 +43,6 @@ public class Roles {
 
 	public void setIdRoles(long idRoles) {
 		this.idRoles = idRoles;
-	}
-
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-
-	public long getId() {
-		return idRoles;
-	}
-
-	public void setId(long id) {
-		this.idRoles = id;
 	}
 
 	public String getRol() {

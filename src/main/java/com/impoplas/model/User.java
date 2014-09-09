@@ -1,34 +1,28 @@
 package com.impoplas.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-
-import javax.persistence.CascadeType;
-
 
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
 @Table(name = "user")
-public class User {
+public class User{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_user", nullable = false)
 	private long idUser;
-	
-	@Id
+
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
 
@@ -38,33 +32,21 @@ public class User {
 	@Column(name = "activo", nullable = false)
 	private boolean activo;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private Roles rol;
+	
 
-	
-	private Set<Roles> roles = new HashSet<Roles>(0);
-	
-	public long getId() {
-		return idUser;
-	}
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "id_user") }, inverseJoinColumns = { @JoinColumn(name = "id_role") })
+//	public Set<Roles> getRoles() {
+//		return roles;
+//	}
 
 	public long getIdUser() {
 		return idUser;
 	}
 
 	public void setIdUser(long idUser) {
-		this.idUser = idUser;
-	}
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "id_user") }, inverseJoinColumns = { @JoinColumn(name = "id_role") })
-	public Set<Roles> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Roles> roles) {
-		this.roles = roles;
-	}
-
-	public void setId(long idUser) {
 		this.idUser = idUser;
 	}
 
@@ -90,6 +72,14 @@ public class User {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+	
+	public Roles getRol() {
+		return rol;
+	}
+
+	public void setRol(Roles rol) {
+		this.rol = rol;
 	}
 	
 

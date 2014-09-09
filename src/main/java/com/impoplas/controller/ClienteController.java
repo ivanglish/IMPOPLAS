@@ -24,20 +24,10 @@ public class ClienteController {
 		super();
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET) 
-    public ModelAndView login(@ModelAttribute("clienteModel")Cliente cliente)
-    {
-    	ModelAndView mav = new ModelAndView("home"); 
-    	mav.addObject("clienteModel", cliente);
-		
-		return mav;
-	
-    }	
 
 	@RequestMapping(value = "/addCliente", method = RequestMethod.GET) 
     public ModelAndView addCliente(@ModelAttribute("clienteModel")Cliente cliente)
     {
-		System.out.println("im kicking down");
     	ModelAndView mav = new ModelAndView("addCliente"); 
     	mav.addObject("clienteModel", cliente);
 		

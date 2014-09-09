@@ -2,9 +2,12 @@ package com.impoplas.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -27,15 +30,27 @@ public class Permisos {
 	
 	@Column(name = "descripcion", nullable = false)
 	private String descripcion;
+	
+//	@ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_role")
+//	private Roles rol;
 
 	
-	public long getId() {
+	public long getIdPermiso() {
 		return idPermiso;
 	}
 
-	public void setId(long idPermiso) {
+	public void setIdPermiso(long idPermiso) {
 		this.idPermiso = idPermiso;
 	}
+
+//	public Roles getRol() {
+//		return rol;
+//	}
+//
+//	public void setRol(Roles rol) {
+//		this.rol = rol;
+//	}
 
 	public String getPermiso() {
 		return permiso;
