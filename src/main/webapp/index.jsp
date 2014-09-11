@@ -15,10 +15,10 @@
 			        <h1>IMPOPLAS SYSTEM</h1>
 			    </div>
 			    <div class="form-group">
-			        <input type="text" class="form-control input-lg" placeholder="Usuario">
+			        <input name="usuario" value="payasote" type="text" class="form-control input-lg" placeholder="Usuario">
 			    </div>
 			    <div class="form-group">
-			        <input type="password" class="form-control input-lg" placeholder="Clave">
+			        <input name="password" value="payasote" type="password" class="form-control input-lg" placeholder="Contraseña">
 			    </div>
 			    <div class="form-group">
 			        <button class="btn btn-primary btn-lg btn-block">Entrar</button>
