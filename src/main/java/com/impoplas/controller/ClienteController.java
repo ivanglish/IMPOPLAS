@@ -50,7 +50,7 @@ public class ClienteController {
     {
 		
     	ModelAndView mav = new ModelAndView("modifyCliente"); 
-    	mav.addObject("clienteModel", cliService.getClienteByRut("8"));
+    	mav.addObject("clienteModel", cliService.getClienteByRut(rutBuscar));
 		
 		return mav;
 	

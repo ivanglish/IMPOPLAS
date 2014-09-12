@@ -10,7 +10,7 @@
 		
 		
 		
-		<form class="col-md-12" method="GET" action="/IMPOPLAS/login">
+		<form class="col-md-12" method="POST" action="/IMPOPLAS/login">
 		 		<div class="form-group">
 			        <h1>IMPOPLAS SYSTEM</h1>
 			    </div>

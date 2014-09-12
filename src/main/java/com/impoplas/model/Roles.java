@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,14 +30,13 @@ public class Roles {
 	@Column(name = "rol", nullable = false)
 	private String rol;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "role_permisos", joinColumns = { @JoinColumn(name = "id_role") }, inverseJoinColumns = { @JoinColumn(name = "id_permiso") })
 	private Set<Permisos> permisos = new HashSet<Permisos>();
 	
 	//@OneToMany(fetch = FetchType.LAZY)
 	//private Set<Permisos> permisos = new HashSet<Permisos>();
 	
-
 	public long getIdRoles() {
 		return idRoles;
 	}
@@ -52,5 +52,14 @@ public class Roles {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	public Set<Permisos> getPermisos() {
+		return permisos;
+	}
+
+	public void setPermisos(Set<Permisos> permisos) {
+		this.permisos = permisos;
+	}
+
 
 }

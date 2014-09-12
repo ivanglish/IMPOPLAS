@@ -12,7 +12,7 @@
 		
 		<div class="form-group" style="margin-top:65px;margin-left:20px;">
 			<h2>Crear Cotizacion</h2>
-			<form action="/IMPOPLAS/buscaCliente" >
+			<form action="/IMPOPLAS/buscaClienteCoti" >
 			<div class="input-append">
 			  <i class="icon-zoom-in"></i>
 			        <input name="rutBuscar" data-provide="typeahead" data-items="4"  type="text" 
@@ -20,40 +20,42 @@
 			        <button type="submit" class="btn">Buscar Rut</button>
 			    </div>
 			</form>
-		
+			<button type="submit" class="btn btn-primary" formtarget="/IMPOPLAS/addCliente"">Crear Nuevo Cliente</button>
 		</div>
 		
-		<div class="form-group">
-			<table class="table">
-  					<tr>
-  						<td>
-  							Razon Social
-  						</td>
-  						<td>
-  							Giro
-  						</td>
-  						<td>
-  							Direccion
-  						</td>
-  						<td>
-  							Comuna
-  						</td>
-  					</tr>
-  					<tr>
-  						<td>
-  							Ciudad
-  						</td>
-  						<td>
-  							Telefono
-  						</td>
-  						<td>
-  							Contacto
-  						</td>
-  						<td>
-  							Email
-  						</td>
-  					</tr>
-				</table> 
+		<div class="form-group" >
+			<form:form class="form-horizontal" method="POST" modelAttribute="clienteModel" action="/IMPOPLAS/saveCliente">
+				<table class="table">
+	  					<tr>
+	  						<td>
+	  							<form:label path="razonSocial"></form:label>
+	  						</td>
+	  						<td>
+	  							<form:label path="giro"></form:label>
+	  						</td>
+	  						<td>
+	  							<form:label path="direccion"></form:label>
+	  						</td>
+	  						<td>
+	  							<form:label path="comuna"></form:label>
+	  						</td>
+	  					</tr>
+	  					<tr>
+	  						<td>
+	  							<form:label path="ciudad"></form:label>
+	  						</td>
+	  						<td>
+	  							<form:label path="telefono"></form:label>
+	  						</td>
+	  						<td>
+	  							<form:label path="contacto"></form:label>
+	  						</td>
+	  						<td>
+	  							<form:label path="email"></form:label>
+	  						</td>
+	  					</tr>
+					</table> 
+				</form:form>
 			</div>
 			
 		    <div class="container">

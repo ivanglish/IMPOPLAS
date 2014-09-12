@@ -37,72 +37,23 @@
 
 <jsp:include page="header.jsp" />
 
-	<div class="form-group" style="margin-top:65px;">
+	<div class="form-group" style="margin-top:65px;margin-left:65px;">
         <h1>SISTEMA IMPOPLAS</h1>
     </div>
 
-    <div class="container">
-    
-    	<c:forEach var="item" items="${permisos}">
+    <div class="container">    
+    	<c:forEach var="item" items="${userModel.rol.permisos}">
     		<div class="row feature">
 		        <div class="col-xs-12 col-sm-4 cfeature infos">
-		            <a href="<c:url value="/addCliente"/>">Agregar Cliente</a>
+		            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
 		        </div>
 		        <div class="col-xs-12 col-sm-4 cfeature free">
-		            <a href="<c:url value="/crearCotizacion"/>">Crear Cotizacion</a>
+	            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
 		        </div>
 		        <div class="col-xs-12 col-sm-4 cfeature standard">
-		            <a href="<c:url value="/addCliente"/>">Factura</a>
+		            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
 		        </div>
 		    </div>
 	    </c:forEach>
-    	
-    	
-    	
-    	
-	    <div class="row feature">
-	        <div class="col-xs-12 col-sm-4 cfeature infos">
-	            <a href="<c:url value="/addCliente"/>">Agregar Cliente</a>
-	        </div>
-	        <div class="col-xs-12 col-sm-4 cfeature free">
-	            <a href="<c:url value="/crearCotizacion"/>">Crear Cotizacion</a>
-	        </div>
-	        <div class="col-xs-12 col-sm-4 cfeature standard">
-	            <a href="<c:url value="/addCliente"/>">Factura</a>
-	        </div>
-	    </div>
-	    <div class="row feature">
-	        <div class="col-xs-12 col-sm-4 cfeature infos">
-	            <a href="<c:url value="/modifyCliente"/>">Modificar Cliente</a>
-	        </div>
-	        <div class="col-xs-12 col-sm-4 cfeature free">
-	            <a href="<c:url value="/addCliente"/>">Modificar Cotizacion</a>
-	        </div>
-	        <div class="col-xs-12 col-sm-4 cfeature standard">
-	            <a href="<c:url value="/addCliente"/>">Reporte</a>
-	        </div>
-	    </div>
-	    <div class="row feature">
-	        <div class="col-xs-12 col-sm-4 cfeature infos">
-	            <a href="<c:url value="/saveCliente"/>">Consulta Cliente</a>
-	        </div>
-	        <div class="col-xs-12 col-sm-4 cfeature free">
-	            <a href="<c:url value="/addCliente"/>">Consulta Cotizacion</a>
-	        </div>
-	        <div class="col-xs-12 col-sm-4 cfeature standard">
-	            <a href="<c:url value="/addCliente"/>">Crear Cotizacion</a>
-	        </div>
-	    </div>
-	      <div class="row feature">
-	        <div class="col-xs-12 col-sm-4 cfeature infos">
-	            <a href="<c:url value="/saveCliente"/>">Reporte Cliente</a>
-	        </div>
-	       <div class="col-xs-12 col-sm-4 cfeature free">
-	            <a href="<c:url value="/addCliente"/>">Crear Cotizacion</a>
-	        </div>
-	        <div class="col-xs-12 col-sm-4 cfeature standard">
-	            <a href="<c:url value="/addCliente"/>">Crear Cotizacion</a>
-	        </div>
-    	</div>
 	</div>	
 </body>

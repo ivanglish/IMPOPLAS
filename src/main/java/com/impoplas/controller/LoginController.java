@@ -20,7 +20,7 @@ public class LoginController {
 	@Autowired
 	private IUserService userService;
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET) 
+	@RequestMapping(value = "/login", method = RequestMethod.POST) 
     public ModelAndView login(@RequestParam("usuario") String usuario, @RequestParam("password") String password,
     		@ModelAttribute("clienteModel")Cliente cliente)
     {
@@ -31,6 +31,7 @@ public class LoginController {
 		
     	ModelAndView mav = new ModelAndView("home"); 
     	mav.addObject("clienteModel", cliente);
+    	mav.addObject("userModel", user);
 		
 		return mav;
 	

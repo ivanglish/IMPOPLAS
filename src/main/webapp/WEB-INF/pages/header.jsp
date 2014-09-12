@@ -23,10 +23,7 @@
             <ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
-						<c:choose>
-							<c:when test="${empty currentUser.email}">Adminitrador</c:when>
-							<c:otherwise>${currentUser.email}</c:otherwise>
-						</c:choose> <b class="caret"></b></a>
+						${userModel.rol.rol}<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<c:choose>
 							<c:when test="${currentUser.role.name == 'admin' }">

@@ -28,6 +28,8 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/impoplas" />
 		<property name="username" value="root" />
 		<property name="password" value="Guevarax9" />
+<!-- 		<property name="username" value="impoplas_user" /> -->
+<!-- 		<property name="password" value="payaxote" /> -->
 	</bean>
 
 
@@ -40,10 +42,12 @@
 		         <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 		         <prop key="hibernate.show_sql">true</prop>
 		         <prop key="hibernate.hbm2ddl.auto">update</prop>
-		         <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/impoplas</prop>
+		         <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/impoplas_sistema</prop>
 		         <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
 		         <prop key="hibernate.connection.username">root</prop>
 		         <prop key="hibernate.connection.password">Guevarax9</prop>
+<!-- 		         <prop key="hibernate.connection.username">impoplas_user</prop> -->
+<!-- 		         <prop key="hibernate.connection.password">payaxote</prop> -->
 			</props>
 		</property>
 	</bean>
