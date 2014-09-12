@@ -101,6 +101,7 @@
                             <form:input path="observacion" type="text" ></form:input>
                         </div>
                 </div>
+                <button type="text" class="btn">Agregar</button>
 
                
             </form:form>
