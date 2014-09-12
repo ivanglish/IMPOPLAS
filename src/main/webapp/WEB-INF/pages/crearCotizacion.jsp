@@ -67,7 +67,7 @@
 
        
 
-           
+           <form:form class="form-horizontal" method="POST" commandName ="detalleModel">
             <div class="container">
                 <table class="table">
                       <tr>
@@ -84,21 +84,40 @@
                               Total
                           </td>
                       </tr>
+                      <<c:forEach var="item" items="${detalleModel}">
+                      	 <tr>
+                          <td>
+                              ${item.productNombre}
+                          </td>
+                          <td>
+                               ${item.productPrecio} 
+                          </td>
+                          <td>
+                               ${item.productPrecio} 
+                          </td>
+                          <td>
+                               ${item.productPrecio} 
+                          </td>
+                      </tr>
+                      
+                      </c:forEach>
                 </table>
             </div>
+             </form:form>
            
-            <form:form class="form-horizontal" method="POST" modelAttribute ="detalleModel" action="/IMPOPLAS/addProduct">
+            <form:form class="form-horizontal" method="GET" action="/IMPOPLAS/addProduct">
                 <h3>Agregar Productos</h3>
                 <div class="form-group">
                         <label class="col-sm-2 control-label">Product:</label>
                         <div class="col-sm-9">
-                            <form:input path="medioPago" type="text" required="true"></form:input>
+                            <form:input name ="product_name" type="text" required="true"></form:input>
+                            <form:hidden name ="product_codigo" type="text"></form:hidden>
                         </div>
                 </div>
                 <div class="form-group">
                         <label class="col-sm-2 control-label">Cantidad</label>
                         <div class="col-sm-9">
-                            <form:input path="observacion" type="text" ></form:input>
+                            <form:input name="cantidad" type="text" ></form:input>
                         </div>
                 </div>
                 <button type="text" class="btn">Agregar</button>
