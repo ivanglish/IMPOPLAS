@@ -18,9 +18,12 @@
 	                    <input name="rutBuscar" data-provide="typeahead" data-items="4"  type="text"
 	                       class="span2 search-query">
 	                    <button type="submit" class="btn">Buscar Rut</button>
-	                    <button type="submit" class="btn btn-primary" onclick="/IMPOPLAS/addCliente">Crear Nuevo Cliente</button>
+	                    
 	            </div>
             </form:form>
+            <form action="/IMPOPLAS/addCliente">
+            	<button type="submit" class="btn btn-primary">Crear Nuevo Cliente</button>
+            </form>
         </div>
          <div class="form-group" >
          	<c:choose>
