@@ -17,7 +17,7 @@ public class Detalle {
 	String vendedor;
 	String validez;
 	String correo;
-	
+	long total;
 	
 	public List<Product> getProductoDetalle() {
 		return productoDetalle;
@@ -54,6 +54,13 @@ public class Detalle {
 	}
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+	
+	public long getTotal() {
+		return total;
+	}
+	public void setTotal(long total) {
+		this.total = total;
 	}
 
 }

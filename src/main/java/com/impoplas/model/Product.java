@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.stereotype.Component;
 
@@ -13,13 +15,85 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "product")
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private long id;
 	
-	@Column(name = "product_nombre", nullable = false)
+	@Column(name = "codigo", nullable = false)
+	private String productCodigo;
+	
+	@Column(name = "nombre", nullable = false)
 	private String productNombre;
+	
+	@Column(name = "medida", nullable = false)
+	private String productMedida;
+	
+
+	@Column(name = "precio", nullable = false)
+	private long productPrecio;
+	
+	@Transient
+	private long cantidad;
+	
+	@Transient
+	private long subtotal;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getProductNombre() {
+		return productNombre;
+	}
+
+	public void setProductNombre(String productNombre) {
+		this.productNombre = productNombre;
+	}
+	
+	public String getProductMedida() {
+		return productMedida;
+	}
+
+	public void setProductMedida(String productMedida) {
+		this.productMedida = productMedida;
+	}
+
+	public long getProductPrecio() {
+		return productPrecio;
+	}
+
+	public void setProductPrecio(long productPrecio) {
+		this.productPrecio = productPrecio;
+	}
+	
+	public String getProductCodigo() {
+		return productCodigo;
+	}
+
+	public void setProductCodigo(String productCodigo) {
+		this.productCodigo = productCodigo;
+	}
+
+	public long getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(long cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	public long getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(long subtotal) {
+		this.subtotal = subtotal;
+	}
 
 }
