@@ -18,11 +18,11 @@ public class ProductDao  extends BaseDAOImpl<Product> implements IProductDao  {
 	}
 	
 	@Transactional
-	public User getProductrByCodigo(String codigo){
+	public Product getProductrByCodigo(String codigo){
 		
 		Criteria criteria = getSession().createCriteria(Product.class)
-	            .add(Restrictions.eq( "codigo" , codigo));
-		return (User) criteria.uniqueResult();
+	            .add(Restrictions.eq( "productCodigo" , codigo));
+		return (Product) criteria.uniqueResult();
 	}
 
 

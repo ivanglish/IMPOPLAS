@@ -4,26 +4,48 @@
 <html class="no-js" lang="en">
 <head>
     <title>Crear Cotizacion</title>
+    <script src="<c:url value="/resources/js/jquery-2.0.3.min.js"/>" type="text/javascript"></script>
     <link href="<c:url value="/resources/bootstrap-3.0.3/css/bootstrap.min.css"/>" rel="stylesheet"/>
+    <link href="<c:url value="/resources/css/select2.css"/>" rel="stylesheet"/>
+	<script src="<c:url value="/resources/js/select2.js"/>"></script>
+    <script>
+		$(document).ready(function() { $("#productList").select2(); });
+	</script>
 </head>
     <body>
    
         <jsp:include page="header.jsp" />
        
-        <div class="form-group" style="margin-top:65px;margin-left:20px;">
-            <h2>Crear Cotizacion</h2>
-            <form:form modelAttribute="clienteModel" action="/IMPOPLAS/buscaClienteCoti" method="GET" >
-	            <div class="input-append">
-	              <i class="icon-zoom-in"></i>
-	                    <input name="rutBuscar" data-provide="typeahead" data-items="4"  type="text"
-	                       class="span2 search-query">
-	                    <button type="submit" class="btn">Buscar Rut</button>
-	                    
-	            </div>
-            </form:form>
-            <form action="/IMPOPLAS/addCliente">
-            	<button type="submit" class="btn btn-primary">Crear Nuevo Cliente</button>
-            </form>
+        <div class="form-group" style="margin-top:50px;margin-left:20px;">
+        	<table>
+        		<tr>
+        			<td>
+			            <h2>Crear Cotizacion</h2>
+			        </td>
+			        <td>
+			    </tr>
+			    <tr>
+			    	<td>
+			    		 <form:form modelAttribute="clienteModel" action="/IMPOPLAS/buscaClienteCoti" method="GET" >
+				            <div class="input-append">
+				              <i class="icon-zoom-in"></i>
+				                    <input name="rutBuscar" data-provide="typeahead" data-items="4"  type="text"
+				                       class="span2 search-query">
+				                    <button type="submit" class="btn">Buscar Rut</button>
+				                    
+				            </div>
+			            </form:form>
+			        </td>
+			        <td>  
+			            <form action="/IMPOPLAS/addClienteFromCoti">
+			            	<button type="submit" class="btn btn-primary">Crear Nuevo Cliente</button>
+			            </form>
+			        </td>
+			        <td>
+			        	<button type="button" class="btn btn-success btn-lg" style="margin-left:638px;">Crear Cotizacion</button>
+			        </td>
+	            </tr>
+            </table>
         </div>
          <div class="form-group" >
          	<c:choose>
@@ -31,6 +53,7 @@
 					Cliente No existe 
 				</c:when>
 				<c:otherwise>
+				<form:form commandName="clienteModel">
                      <table class="table" class="form-horizontal">
                           <tr>
                               <td>
@@ -61,6 +84,7 @@
                               </td>
                           </tr>
                         </table>
+                  </form:form>
                   </c:otherwise>
               </c:choose>
            </div>
@@ -69,60 +93,193 @@
 
            <form:form class="form-horizontal" method="POST" commandName ="detalleModel">
             <div class="container">
-                <table class="table">
+                <table class="table table-striped">
                       <tr>
                           <td>
                               Producto
                           </td>
                           <td>
+                              Medida
+                          </td>
+                          <td>
                               Cantidad
                           </td>
                           <td>
-                              Subtotal
+                              Precio Unitario
                           </td>
                           <td>
                               Total
                           </td>
                       </tr>
-                      <<c:forEach var="item" items="${detalleModel}">
-                      	 <tr>
+                      <c:choose>
+							<c:when test="${empty detalleModel}">
+								
+							</c:when>
+							<c:otherwise>
+			                      <c:forEach var="item" items="${detalleModel.productoDetalle}">
+			                      	 <tr>
+			                          <td>
+			                              ${item.productNombre}
+			                          </td>
+			                          <td>
+			                              ${item.productMedida}
+			                          </td>
+			                          <td>
+			                               ${item.cantidad} 
+			                          </td>
+			                          <td>
+			                               ${item.productPrecio} 
+			                          </td>
+			                          <td>
+			                               ${item.subtotal} 
+			                          </td>
+			                      </tr>
+			                      
+			                      </c:forEach>
+			                </c:otherwise>
+			          </c:choose>
+			          <tr>
                           <td>
-                              ${item.productNombre}
+                          </td>
+                           <td>
                           </td>
                           <td>
-                               ${item.productPrecio} 
                           </td>
                           <td>
-                               ${item.productPrecio} 
+                          	  <b>subtotal</b>
                           </td>
                           <td>
-                               ${item.productPrecio} 
+                              <b>${detalleModel.subtotal}</b>
                           </td>
                       </tr>
-                      
-                      </c:forEach>
+                      <tr>
+                          <td>
+                          </td>
+                           <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          	  <b>I.V.A. (19%)</b>
+                          </td>
+                          <td>
+                              <b>${detalleModel.iva}</b>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                          </td>
+                           <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          	  <b>TOTAL</b>
+                          </td>
+                          <td>
+                              <b>${detalleModel.total}</b>
+                          </td>
+                      </tr>
                 </table>
             </div>
              </form:form>
            
             <form:form class="form-horizontal" method="GET" action="/IMPOPLAS/addProduct">
-                <h3>Agregar Productos</h3>
-                <div class="form-group">
-                        <label class="col-sm-2 control-label">Product:</label>
+            <table width="100%">
+            	<tr>
+            		<td>
+		                <h3 style="margin-left:80px;">Agregar Productos</h3>
+		            </td>
+		            <td>
+		   			</td>
+		   			<td>
+		            </td>
+		        </tr>
+            	<tr>
+            		<td>
+		               <label class="col-sm-2 control-label">Product:</label>     
+                       <select id="productList" name="productList" class="selectpicker">
+								<c:choose>
+									<c:when test="${not empty productModelList}">
+										<c:forEach var="item" items="${productModelList}">
+													<option value="${item.productCodigo},${item.productNombre},${item.productMedida},${item.productPrecio}" selected>${item.productNombre} ${item.productMedida}</option>
+										</c:forEach>
+									</c:when>
+								</c:choose>
+					   </select>
+		            </td>
+		            <td>
+		            	<label class="col-sm-2 control-label">Medio de Pago</label>
+		   			</td>
+		   			<td>
                         <div class="col-sm-9">
-                            <form:input name ="product_name" type="text" required="true"></form:input>
-                            <form:hidden name ="product_codigo" type="text"></form:hidden>
+                            <input name="medioPago" type="text" ></input>
                         </div>
-                </div>
-                <div class="form-group">
-                        <label class="col-sm-2 control-label">Cantidad</label>
+		            </td>
+		        </tr>
+		        <tr>
+		        	<td>
+		               <label class="col-sm-2 control-label">Cantidad</label>
                         <div class="col-sm-9">
-                            <form:input name="cantidad" type="text" ></form:input>
+                            <input name="cantidad" type="text" ></input>
+                            <button type="submit" class="btn">Agregar</button>
                         </div>
-                </div>
-                <button type="text" class="btn">Agregar</button>
-
-               
+		             </td>
+		             <td>
+                        <label class="col-sm-2 control-label">Observacion</label>
+                     </td>
+		   			<td>
+                        <div class="col-sm-9">
+                            <input name="observacion" type="text" ></input>
+                        </div>
+                     </td>
+                </tr>
+                <tr>
+                    <td>      
+                    </td>
+                    <td>
+                        <label class="col-sm-2 control-label">Vendedor</label>
+                    </td>
+		   			<td>
+                        <div class="col-sm-9">
+                            <input name="vendedor" type="text" ></input>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                	<td></td>
+                	<td>
+                        <label class="col-sm-2 control-label">Telefono</label>
+                    </td>
+		   			<td>
+                        <div class="col-sm-9">
+                            <input name="telefono" type="text" ></input>
+                        </div>
+                     </td>
+                </tr>
+                <tr>
+                	<td></td>
+                	<td>
+                        <label class="col-sm-2 control-label">Validez</label>
+                    </td>
+		   			<td>
+                        <div class="col-sm-9">
+                            <input name="validez" type="text" ></input>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                	<td></td>
+                	<td>
+                        <label class="col-sm-2 control-label">Correo</label>
+                    </td>
+		   			<td>
+                        <div class="col-sm-9">
+                            ventas@impoplas.cl
+                        </div>        
+		       		</td>   
+	            </tr>
+	         </table>
             </form:form>
     </body>
 </html>

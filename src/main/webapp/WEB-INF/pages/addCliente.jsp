@@ -68,11 +68,25 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-3">
-						<button type="submit" class="btn btn-primary">Guardar Cliente</button>
+						<c:choose>
+							<c:when test="${fromCoti==1}">
+								<button name="from" value="fromCoti" type="submit" class="btn btn-success">Guardar Cliente</button>
+							</c:when>
+							<c:otherwise>
+								<button name="from" type="submit" class="btn btn-primary">Guardar Cliente</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				<label title="${estado}"></label>
 			</form:form>
+			<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-3">
+						<form:form action="/IMPOPLAS/home"  method="GET">
+							<button type="submit" class="btn btn-primary">Volver a la pagina principal</button>
+						</form:form>
+					</div>
+			</div>
 		</div>
 	</body>
 </html>

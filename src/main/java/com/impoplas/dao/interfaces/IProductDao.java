@@ -5,7 +5,7 @@ import com.impoplas.model.User;
 
 public interface IProductDao extends BaseDAO<Product> {
 	
-	public User getProductrByCodigo(String codigo);
+	public Product getProductrByCodigo(String codigo);
 
 
 }

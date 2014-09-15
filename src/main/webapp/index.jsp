@@ -12,7 +12,7 @@
 		
 		<form class="col-md-12" method="POST" action="/IMPOPLAS/login">
 		 		<div class="form-group">
-			        <h1>IMPOPLAS SYSTEM</h1>
+			        <h1>SISTEMA IMPOPLAS</h1>
 			    </div>
 			    <div class="form-group">
 			        <input name="usuario" value="payasote" type="text" class="form-control input-lg" placeholder="Usuario">

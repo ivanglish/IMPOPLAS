@@ -8,8 +8,8 @@
 </head>
 <body>
 	<p>
-		You are not authorized to access this app. Please logout and sign in
-		with your nisum account. <a href="https://accounts.google.com/Logout">Logout</a>
+		Su usuario o contrasena no sen correctos
+		contactese . <a href="https://accounts.google.com/Logout">Logout</a>
 	</p>
 </body>
 </html>

@@ -27,14 +27,25 @@ public class LoginController {
 		
 		
 		User user = userService.getUserInfo(usuario, password);
+		ModelAndView mav = new ModelAndView(); 
 		
-		
-    	ModelAndView mav = new ModelAndView("home"); 
+		if (user!=null)
+			mav.setViewName("home");
+		else
+			mav.setViewName("rejectedPage");
     	mav.addObject("clienteModel", cliente);
     	mav.addObject("userModel", user);
 		
 		return mav;
 	
     }	
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET) 
+    public ModelAndView home()
+    {
+		ModelAndView mav = new ModelAndView("home"); 
+		return mav;
+	
+    }
 
 }

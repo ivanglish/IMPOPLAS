@@ -17,7 +17,9 @@ public class Detalle {
 	String vendedor;
 	String validez;
 	String correo;
-	long total;
+	double subtotal;
+	double iva;
+	double total;
 	
 	public List<Product> getProductoDetalle() {
 		return productoDetalle;
@@ -56,11 +58,24 @@ public class Detalle {
 		this.correo = correo;
 	}
 	
-	public long getTotal() {
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(long total) {
-		this.total = total;
+	public void setTotal(double d) {
+		this.total = d;
+	}
+	
+	public double getSubtotal() {
+		return subtotal;
+	}
+	public void setSubtotal(double d) {
+		this.subtotal = d;
+	}
+	public double getIva() {
+		return iva;
+	}
+	public void setIva(double d) {
+		this.iva = d;
 	}
 
 }
