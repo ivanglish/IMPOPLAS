@@ -11,7 +11,7 @@
         </div>
         <div class="navbar-collapse collapse">
 	        <ul class="nav navbar-nav">
-		        	<li><a href="<c:url value="/user"/>"><span class="glyphicon glyphicon-user"></span> Cliente</a></li>
+		        	<li><a href="<c:url value="/IMPOPLAS/home"/>"><span class="glyphicon glyphicon-home"></span> Pagina Principal</a></li>
 		        	<c:if test="${currentUser.role.name == 'admin' }">
 		        		<li><a href="<c:url value="/admin"/>"><span class="glyphicon glyphicon-wrench"></span> Admin</a></li>
 		        	</c:if>

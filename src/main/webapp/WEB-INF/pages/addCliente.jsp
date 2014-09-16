@@ -80,13 +80,6 @@
 				</div>
 				<label title="${estado}"></label>
 			</form:form>
-			<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-3">
-						<form:form action="/IMPOPLAS/home"  method="GET">
-							<button type="submit" class="btn btn-primary">Volver a la pagina principal</button>
-						</form:form>
-					</div>
-			</div>
 		</div>
 	</body>
 </html>
