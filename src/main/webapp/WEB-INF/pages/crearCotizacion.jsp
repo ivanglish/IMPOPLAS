@@ -41,11 +41,6 @@
 			            	<button type="submit" class="btn btn-primary">Crear Nuevo Cliente</button>
 			            </form>
 			        </td>
-			        <td>
-			        	 <form action="/IMPOPLAS/saveCotizacion"  method="POST">
-			        		<button type="submit" class="btn btn-success btn-lg" style="margin-left:638px;">Crear Cotizacion</button>
-			        	 </form>
-			        </td>
 	            </tr>
             </table>
         </div>
@@ -184,104 +179,124 @@
                       </tr>
                 </table>
             </div>
-             </form:form>
-           
-            <form:form class="form-horizontal" method="GET" action="/IMPOPLAS/addProduct">
-            <table width="100%">
-            	<tr>
-            		<td>
-		                <h3 style="margin-left:80px;">Agregar Productos</h3>
-		            </td>
-		            <td>
-		   			</td>
-		   			<td>
-		            </td>
-		        </tr>
-            	<tr>
-            		<td>
-		               <label class="col-sm-2 control-label">Product:</label>     
-                       <select id="productList" name="productList" class="selectpicker">
-								<c:choose>
-									<c:when test="${not empty productModelList}">
-										<c:forEach var="item" items="${productModelList}">
-													<option value="${item.productCodigo},${item.productNombre},${item.productMedida},${item.productPrecio}" selected>${item.productNombre} ${item.productMedida}</option>
-										</c:forEach>
-									</c:when>
-								</c:choose>
-					   </select>
-		            </td>
-		            <td>
-		            	<label class="col-sm-2 control-label">Medio de Pago</label>
-		   			</td>
-		   			<td>
-                        <div class="col-sm-9">
-                            <input name="medioPago" type="text" ></input>
-                        </div>
-		            </td>
-		        </tr>
-		        <tr>
-		        	<td>
-		               <label class="col-sm-2 control-label">Cantidad</label>
-                        <div class="col-sm-9">
-                            <input name="cantidad" type="text" ></input>
-                            <button type="submit" class="btn">Agregar</button>
-                        </div>
-		             </td>
-		             <td>
-                        <label class="col-sm-2 control-label">Observacion</label>
-                     </td>
-		   			<td>
-                        <div class="col-sm-9">
-                            <input name="observacion" type="text" ></input>
-                        </div>
-                     </td>
-                </tr>
-                <tr>
-                    <td>      
-                    </td>
-                    <td>
-                        <label class="col-sm-2 control-label">Vendedor</label>
-                    </td>
-		   			<td>
-                        <div class="col-sm-9">
-                            <input name="vendedor" type="text" ></input>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                	<td></td>
-                	<td>
-                        <label class="col-sm-2 control-label">Telefono</label>
-                    </td>
-		   			<td>
-                        <div class="col-sm-9">
-                            <input name="telefono" type="text" ></input>
-                        </div>
-                     </td>
-                </tr>
-                <tr>
-                	<td></td>
-                	<td>
-                        <label class="col-sm-2 control-label">Validez</label>
-                    </td>
-		   			<td>
-                        <div class="col-sm-9">
-                            <input name="validez" type="text" ></input>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                	<td></td>
-                	<td>
-                        <label class="col-sm-2 control-label">Correo</label>
-                    </td>
-		   			<td>
-                        <div class="col-sm-9">
-                            ventas@impoplas.cl
-                        </div>        
-		       		</td>   
-	            </tr>
-	         </table>
-            </form:form>
+        </form:form>
+            
+             <!-- Changed from `hidden` to `auto`. -->
+        <div style="overflow:auto;width:90%;">
+
+            <!-- This is the div that does the trick: -->
+            <div style="width:1000px;">
+
+            <div style="display:inline-block;width:600px">
+	            <form:form class="form-horizontal" method="GET" action="/IMPOPLAS/addProduct">
+		            <table width="100%">
+		            	<tr>
+		            		<td>
+				                <h3 style="margin-left:80px;">Agregar Productos</h3>
+				            </td>
+				        </tr>
+		            	<tr>
+		            		<td>
+				               <label class="col-sm-2 control-label">Product:</label>     
+		                       <select id="productList" name="productList" class="selectpicker">
+										<c:choose>
+											<c:when test="${not empty productModelList}">
+												<c:forEach var="item" items="${productModelList}">
+															<option value="${item.productCodigo},${item.productNombre},${item.productMedida},${item.productPrecio}" selected>${item.productNombre} ${item.productMedida}</option>
+												</c:forEach>
+											</c:when>
+										</c:choose>
+							   </select>
+				            </td>
+				        </tr>
+				        <tr>
+				        	<td>
+				               <label class="col-sm-2 control-label">Cantidad</label>
+		                        <div class="col-sm-9">
+		                            <input name="cantidad" type="text" ></input>
+		                            <button type="submit" class="btn">Agregar</button>
+		                        </div>
+				             </td>
+		                </tr>
+		             </table>
+	            </form:form>
+            </div>
+            
+            <div style="display:inline-block;width:100px">
+            	<form:form class="form-horizontal" modelAttribute="cotizacionModel" action="/IMPOPLAS/saveCotizacion"  method="POST">
+	            	<table>
+	            		<tr>
+	            			<td>
+	            				<label class="col-sm-2 control-label">Medio de Pago</label>
+	            			</td>
+	            			<td>
+	            				<div class="col-sm-9">
+			                        <input name="medioPago" type="text" ></input>
+			                    </div>
+	            			</td>
+	            			<td></td>
+	            		</tr>
+	            		<tr>
+	            			<td>
+	            				<label class="col-sm-2 control-label">Observacion</label>
+	            			</td>
+	            			<td>
+	            				<div class="col-sm-9">
+			                        <input name="observacion" type="text" ></input>
+			                    </div>
+	            			</td>
+	            			<td></td>
+	            		</tr>
+	            		<tr>
+	            			<td>
+	            				<label class="col-sm-2 control-label">Vendedor</label>
+	            			</td>
+	            			<td>
+	            				<div class="col-sm-9">
+			                         <input name="vendedor" type="text" ></input>
+			                     </div>
+	            			</td>
+	            			<td></td>
+	            		</tr>
+	            		<tr>
+	            			<td>
+	            				<label class="col-sm-2 control-label">Telefono</label>
+	            			</td>
+	            			<td>
+	            				 <div class="col-sm-9">
+			                         <input name="telefono" type="text" ></input>
+			                     </div>
+	            			</td>
+	            			<td></td>
+	            		</tr>
+	            		<tr>
+	            			<td>
+	            				<label class="col-sm-2 control-label">Validez</label>
+	            			</td>
+	            			<td>
+	            				<div class="col-sm-9">
+			                         <input name="validez" type="text" ></input>
+			                     </div>
+	            			</td>
+	            			<td></td>
+	            		</tr>
+	            		<tr>
+	            			<td>
+	            				<label class="col-sm-2 control-label">Correo</label>
+	            			</td>
+	            			<td>
+	            				<div class="col-sm-9">
+			                         ventas@impoplas.cl
+			                     </div>
+	            			</td>
+	            			  <td>
+					        	<button type="submit" class="btn btn-success btn-lg" style="margin-left:638px;">Crear Cotizacion</button>
+					        </td>
+	            		</tr>
+	            	</table>
+	            </form:form>
+            </div>
+          </div>
+        </div>
     </body>
 </html>
