@@ -42,7 +42,9 @@
 			            </form>
 			        </td>
 			        <td>
-			        	<button type="button" class="btn btn-success btn-lg" style="margin-left:638px;">Crear Cotizacion</button>
+			        	 <form action="/IMPOPLAS/saveCotizacion"  method="POST">
+			        		<button type="submit" class="btn btn-success btn-lg" style="margin-left:638px;">Crear Cotizacion</button>
+			        	 </form>
 			        </td>
 	            </tr>
             </table>
@@ -91,7 +93,7 @@
 
        
 
-           <form:form class="form-horizontal" method="POST" commandName ="detalleModel">
+           <form:form class="form-horizontal" method="POST" commandName ="cotizacionModel">
             <div class="container">
                 <table class="table table-striped">
                       <tr>
@@ -112,11 +114,11 @@
                           </td>
                       </tr>
                       <c:choose>
-							<c:when test="${empty detalleModel}">
+							<c:when test="${empty cotizacionModel}">
 								
 							</c:when>
 							<c:otherwise>
-			                      <c:forEach var="item" items="${detalleModel.productoDetalle}">
+			                      <c:forEach var="item" items="${cotizacionModel.productoDetalle}">
 			                      	 <tr>
 			                          <td>
 			                              ${item.productNombre}
@@ -149,7 +151,7 @@
                           	  <b>subtotal</b>
                           </td>
                           <td>
-                              <b>${detalleModel.subtotal}</b>
+                              <b>${cotizacionModel.subtotal}</b>
                           </td>
                       </tr>
                       <tr>
@@ -163,7 +165,7 @@
                           	  <b>I.V.A. (19%)</b>
                           </td>
                           <td>
-                              <b>${detalleModel.iva}</b>
+                              <b>${cotizacionModel.iva}</b>
                           </td>
                       </tr>
                       <tr>
@@ -177,7 +179,7 @@
                           	  <b>TOTAL</b>
                           </td>
                           <td>
-                              <b>${detalleModel.total}</b>
+                              <b>${cotizacionModel.total}</b>
                           </td>
                       </tr>
                 </table>

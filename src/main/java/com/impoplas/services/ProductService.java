@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.impoplas.dao.interfaces.IProductDao;
-import com.impoplas.model.Detalle;
+import com.impoplas.model.Cotizacion;
+import com.impoplas.model.DetalleProducto;
 import com.impoplas.model.Product;
 import com.impoplas.services.interfaces.IProductService;
 
@@ -19,27 +20,35 @@ public class ProductService implements IProductService{
 	
 	private static List<Product> listpro = new ArrayList<Product>(); 
 	
-	public Detalle getProductByCode(String codigo, long cantidad){
-
-		Product p=productDao.getProductrByCodigo(codigo);
-		p.setCantidad(cantidad);
-		p.setSubtotal(p.getProductPrecio()*cantidad);
-		
-		listpro.add(p);
-		Detalle detalle = new Detalle();
-		detalle.setTotal(0);
-		
-		for (Product product : listpro) {
-			
-			detalle.setTotal(product.getSubtotal()+detalle.getTotal());
-		}
-
-		detalle.setProductoDetalle(listpro);
-
-		return detalle;
-	}
+//	public Cotizacion getProductByCode(String codigo, long cantidad){
+//		
+//		
+//
+//		Product p=productDao.getProductrByCodigo(codigo);
+//		p.setCantidad(cantidad);
+//		p.setSubtotal(p.getProductPrecio()*cantidad);
+//		
+//		DetalleProducto detalleProducto = new DetalleProducto();
+//		detalleProducto.setCantidad(cantidad);
+//		detalleProducto.setSubtotal(p.getProductPrecio()*cantidad);
+//		detalleProducto.setProduct(p);
+//
+//
+//		listpro.add(p);
+//		Cotizacion cotizacion = new Cotizacion();
+//		cotizacion.setTotal(0);
+//		
+//		for (Product product : listpro) {
+//			
+//			cotizacion.setTotal(product.getSubtotal()+cotizacion.getTotal());
+//		}
+//
+//		cotizacion.setProductoDetalle(listpro);
+//
+//		return cotizacion;
+//	}
 	
-	public Detalle stripProduct(String productDetails, long cantidad){
+	public Cotizacion stripProduct(String productDetails, long cantidad){
 		
 		String[] details= productDetails.split(",");
 		Product p = new Product();
@@ -51,16 +60,16 @@ public class ProductService implements IProductService{
 		p.setSubtotal(p.getProductPrecio()*cantidad);
 		listpro.add(p);
 		
-		Detalle d= new Detalle();
+		Cotizacion coti= new Cotizacion();
 		
 		for (Product product : listpro) {
 			
-			d.setSubtotal(product.getSubtotal()+d.getSubtotal());
+			coti.setSubtotal(product.getSubtotal()+coti.getSubtotal());
 		}		
 		
-		d.setIva(d.getSubtotal()*0.019);
-		d.setTotal(d.getSubtotal()+d.getIva());
-		d.setProductoDetalle(listpro);		
-		return d;		
+		coti.setIva(coti.getSubtotal()*0.019);
+		coti.setTotal(coti.getSubtotal()+coti.getIva());
+		coti.setProductoDetalle(listpro);		
+		return coti;		
 	}
 }

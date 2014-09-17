@@ -13,15 +13,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.impoplas.dao.interfaces.IProductDao;
 import com.impoplas.model.Cliente;
-import com.impoplas.model.Detalle;
+import com.impoplas.model.Cotizacion;
 import com.impoplas.model.Product;
 import com.impoplas.services.interfaces.IClienteService;
+import com.impoplas.services.interfaces.ICotizacionService;
 import com.impoplas.services.interfaces.IProductService;
 
 
 @Controller
-@SessionAttributes({"clienteModel","detalleModel"})
+@SessionAttributes({"clienteModel","cotizacionModel"})
 public class CotizacionController {
+	
+	@Autowired
+	private ICotizacionService cotizacionService;
 	
 	@Autowired
 	private IClienteService cliService;
@@ -41,10 +45,10 @@ public class CotizacionController {
     public ModelAndView crearCotizacion()
     {
 		Cliente cliente = new Cliente();
-		Detalle detalle = new Detalle();
+		Cotizacion cotizacion = new Cotizacion();
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
     	mav.addObject("clienteModel", cliente);
-    	mav.addObject("detalleModel", detalle);
+    	mav.addObject("cotizacionModel", cotizacion);
 		
 		return mav;
 	
@@ -65,10 +69,22 @@ public class CotizacionController {
 	@RequestMapping(value = "/addProduct", method = RequestMethod.GET) 
     public ModelAndView addProduct(@ModelAttribute("clienteModel") Cliente cliente, @RequestParam("productList") String productDetails, @RequestParam("cantidad") String cantidad)
     {
-		Detalle detalle = proService.stripProduct(productDetails, Long.valueOf(cantidad).longValue());
+		Cotizacion cotizacion = proService.stripProduct(productDetails, Long.valueOf(cantidad).longValue());
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
     	mav.addObject("clienteModel", cliente);
-    	mav.addObject("detalleModel", detalle);
+    	mav.addObject("cotizacionModel", cotizacion);
+		
+		return mav;
+	
+    }
+	
+	@RequestMapping(value = "/saveCotizacion", method = RequestMethod.POST) 
+    public ModelAndView saveCotizacion(@ModelAttribute("clienteModel") Cliente cliente, @ModelAttribute("cotizacionModel") Cotizacion coti)
+    {
+		cotizacionService.saveCotizacion(coti, cliente);
+    	ModelAndView mav = new ModelAndView("crearCotizacion"); 
+//    	mav.addObject("clienteModel", cliente);
+////    	mav.addObject("cotizacionModel", cotizacion);
 		
 		return mav;
 	

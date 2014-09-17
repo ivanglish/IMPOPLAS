@@ -16,11 +16,8 @@ import org.springframework.stereotype.Component;
 @Table(name = "product")
 public class Product {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false)
-	private long id;
 	
+	@Id
 	@Column(name = "codigo", nullable = false)
 	private String productCodigo;
 	
@@ -39,14 +36,6 @@ public class Product {
 	
 	@Transient
 	private long subtotal;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getProductNombre() {
 		return productNombre;

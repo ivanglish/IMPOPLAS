@@ -1,12 +1,13 @@
 package com.impoplas.services.interfaces;
 
-import com.impoplas.model.Detalle;
+import com.impoplas.model.Cotizacion;
+
 
 public interface IProductService {
 	
-	public Detalle getProductByCode(String codigo,long cantidad);
+//	public Cotizacion getProductByCode(String codigo,long cantidad);
 	
-	public Detalle stripProduct(String productDetails,long cantidad);
+	public Cotizacion stripProduct(String productDetails,long cantidad);
 	
 
 }
