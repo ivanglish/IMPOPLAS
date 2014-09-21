@@ -1,5 +1,6 @@
 package com.impoplas.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,17 +37,9 @@ public class Cotizacion {
 	@JoinColumn(name = "rut")
 	private Cliente cliente;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Detalle detalle;
-	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id")
-	private Set<DetalleProducto> detalleProducto= new HashSet<DetalleProducto>() ;
-	
 	@Transient
 	List<Product> productoDetalle;
 	
-
 	@Column(name = "medioPago", nullable = false)
 	String medioPago;
 	
@@ -122,7 +115,6 @@ public class Cotizacion {
 	public void setIva(double d) {
 		this.iva = d;
 	}
-	
 
 	public long getIdCotizacion() {
 		return idCotizacion;
@@ -140,12 +132,6 @@ public class Cotizacion {
 		this.cliente = cliente;
 	}
 	
-	public Set<DetalleProducto> getDetalleProducto() {
-		return detalleProducto;
-	}
-	public void setDetalleProducto(Set<DetalleProducto> detalleProducto) {
-		this.detalleProducto = detalleProducto;
-	}
 	public List<Product> getProductoDetalle() {
 		return productoDetalle;
 	}

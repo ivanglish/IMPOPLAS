@@ -1,11 +1,18 @@
 package com.impoplas.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,6 +36,10 @@ public class DetalleProducto {
 	
 	@Column(name = "subtotal", nullable = false)
 	private long subtotal; 
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_cotizacion")
+	private Cotizacion cotizacion;
 	
 	public long getId() {
 		return id;
@@ -54,6 +65,13 @@ public class DetalleProducto {
 	}
 	public void setSubtotal(long subtotal) {
 		this.subtotal = subtotal;
+	}
+	
+	public Cotizacion getCotizacion() {
+		return cotizacion;
+	}
+	public void setCotizacion(Cotizacion cotizacion) {
+		this.cotizacion = cotizacion;
 	}
 	
 	

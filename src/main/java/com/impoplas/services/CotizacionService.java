@@ -29,19 +29,22 @@ public class CotizacionService implements ICotizacionService {
 	
 	public Cotizacion saveCotizacion(Cotizacion coti, Cliente cliente){
 		
-		DetalleProducto detalleProducto= new DetalleProducto();
-		Set<DetalleProducto> listDetProduct = new HashSet<DetalleProducto>();
+		DetalleProducto detalleProducto;
+				coti.setCliente(cliente);
 		
 		for (Product producto : coti.getProductoDetalle()) {	
+			detalleProducto= new DetalleProducto();
 			detalleProducto.setSubtotal(Long.valueOf(producto.getSubtotal()).longValue());
-			detalleProducto.setCantidad(Long.valueOf(producto.getProductCodigo()).longValue());
+			detalleProducto.setCantidad(Long.valueOf(producto.getCantidad()).longValue());
 			detalleProducto.setProduct(producto);
-			listDetProduct.add(detalleProducto);
+			detalleProducto.setCotizacion(coti);
+			detalleProductoDao.save(detalleProducto);
+			
+			
 		}
 		
-		coti.setDetalleProducto(listDetProduct);
-		coti.setCliente(cliente);
-		cotizacionDao.save(coti);
+		
+		
 		
 		return null;
 	}

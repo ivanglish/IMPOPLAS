@@ -51,6 +51,11 @@
 				</c:when>
 				<c:otherwise>
 				<form:form commandName="clienteModel">
+					<div style="text-align: center;">
+					    <span">
+					       <b>RUT : ${clienteModel.rut}</b>
+					    </span>
+					</div>
                      <table class="table" class="form-horizontal">
                           <tr>
                               <td>
@@ -182,13 +187,13 @@
         </form:form>
             
              <!-- Changed from `hidden` to `auto`. -->
-        <div style="overflow:auto;width:90%;">
+        <div style="overflow:auto;width:100%;">
 
             <!-- This is the div that does the trick: -->
             <div style="width:1000px;">
 
             <div style="display:inline-block;width:600px">
-	            <form:form class="form-horizontal" method="GET" action="/IMPOPLAS/addProduct">
+	            <form:form class="form-horizontal" method="GET" commandName="clienteModel" action="/IMPOPLAS/addProduct">
 		            <table width="100%">
 		            	<tr>
 		            		<td>
@@ -290,7 +295,7 @@
 			                     </div>
 	            			</td>
 	            			  <td>
-					        	<button type="submit" class="btn btn-success btn-lg" style="margin-left:638px;">Crear Cotizacion</button>
+					        	<button type="submit" class="btn btn-success btn-lg" style="margin-left:128px;">Crear Cotizacion</button>
 					        </td>
 	            		</tr>
 	            	</table>
