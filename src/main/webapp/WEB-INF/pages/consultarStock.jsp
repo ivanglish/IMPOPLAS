@@ -47,7 +47,7 @@
         
         
         
-        <form class="form-inline search-form" role="form" onsubmit="return false" action="#" accept-charset="UTF-8">
+        <form class="form-inline search-form" role="form" onsubmit="return false" action="#" accept-charset="UTF-8" style="margin-top:100px;">
 			<div class="form-group">
 			<label class="control-label hidden-xs" for="codigo">Código de Producto</label>
 			</div>
