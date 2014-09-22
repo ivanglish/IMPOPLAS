@@ -81,11 +81,9 @@ public class CotizacionController {
 	@RequestMapping(value = "/saveCotizacion", method = RequestMethod.POST) 
     public ModelAndView saveCotizacion(@ModelAttribute("clienteModel") Cliente cliente, @ModelAttribute("cotizacionModel") Cotizacion coti)
     {
-		cotizacionService.saveCotizacion(coti, cliente);
+		long cotiId = cotizacionService.saveCotizacion(coti, cliente);
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
-//    	mav.addObject("clienteModel", cliente);
-////    	mav.addObject("cotizacionModel", cotizacion);
-		
+    	mav.addObject("msg", "La cotizacion ha sido creada exitosamente. El numero es "+cotiId);
 		return mav;
 	
     }

@@ -81,7 +81,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-3">
-						<button type="submit" class="btn btn-primary">Guardar Cliente</button>
+						<button name="from" value="fromModi" type="submit" class="btn btn-primary">Guardar Cliente</button>
 					</div>
 				</div>
 				<label title="${estado}"></label>

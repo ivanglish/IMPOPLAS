@@ -27,8 +27,9 @@ public class CotizacionService implements ICotizacionService {
 	private IDetalleProductoDao detalleProductoDao;
 	
 	
-	public Cotizacion saveCotizacion(Cotizacion coti, Cliente cliente){
+	public long saveCotizacion(Cotizacion coti, Cliente cliente){
 		
+		Cotizacion result = null;
 		DetalleProducto detalleProducto;
 				coti.setCliente(cliente);
 		
@@ -38,15 +39,10 @@ public class CotizacionService implements ICotizacionService {
 			detalleProducto.setCantidad(Long.valueOf(producto.getCantidad()).longValue());
 			detalleProducto.setProduct(producto);
 			detalleProducto.setCotizacion(coti);
-			detalleProductoDao.save(detalleProducto);
-			
-			
+			result = detalleProductoDao.saveCotizacion(detalleProducto);		
 		}
-		
-		
-		
-		
-		return null;
+
+		return result.getIdCotizacion();
 	}
 
 }

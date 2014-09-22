@@ -16,7 +16,7 @@ public class ClienteDao extends BaseDAOImpl<Cliente> implements IClienteDao{
 	@Transactional
 	public boolean saveCliente(Cliente c) {
 		
-		getSession().save(c);
+		getSession().saveOrUpdate(c);
 		if (c.getRut()!=null){
 			return true; 
 		}else

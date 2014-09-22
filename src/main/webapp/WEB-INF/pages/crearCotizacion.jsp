@@ -40,6 +40,7 @@
 			            <form action="/IMPOPLAS/addClienteFromCoti">
 			            	<button type="submit" class="btn btn-primary">Crear Nuevo Cliente</button>
 			            </form>
+			            <h2 style="color: green">${msg}</h2>
 			        </td>
 	            </tr>
             </table>

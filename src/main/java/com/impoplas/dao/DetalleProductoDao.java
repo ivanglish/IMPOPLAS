@@ -1,6 +1,7 @@
 package com.impoplas.dao;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.impoplas.dao.interfaces.ICotizacionDao;
 import com.impoplas.dao.interfaces.IDetalleProductoDao;
@@ -15,5 +16,13 @@ public class DetalleProductoDao extends BaseDAOImpl<DetalleProducto> implements 
 	public DetalleProductoDao() {
 		super(DetalleProducto.class);
 		// TODO Auto-generated constructor stub
+	}
+	
+	@Transactional
+	public Cotizacion saveCotizacion(DetalleProducto d) {
+		
+		getSession().saveOrUpdate(d);
+		return d.getCotizacion();
+
 	}
 }

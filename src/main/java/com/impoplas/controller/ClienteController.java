@@ -41,20 +41,20 @@ public class ClienteController {
 	
 
 	@RequestMapping(value = "/addCliente", method = RequestMethod.GET) 
-    public ModelAndView addCliente(@ModelAttribute("clienteModel")Cliente cliente)
+    public ModelAndView addCliente()
     {
     	ModelAndView mav = new ModelAndView("addCliente"); 
-    	mav.addObject("clienteModel", cliente);
+    	mav.addObject("clienteModel", new Cliente());
 		
 		return mav;
 	
     }
 	
 	@RequestMapping(value = "/addClienteFromCoti", method = RequestMethod.GET) 
-    public ModelAndView addClienteFromCoti(@ModelAttribute("clienteModel")Cliente cliente)
+    public ModelAndView addClienteFromCoti()
     {
     	ModelAndView mav = new ModelAndView("addCliente"); 
-    	mav.addObject("clienteModel", cliente);
+    	mav.addObject("clienteModel", new Cliente());
     	mav.addObject("fromCoti", 1);
 		
 		return mav;
@@ -64,10 +64,10 @@ public class ClienteController {
 	
 	
 	@RequestMapping(value = "/modifyCliente", method = RequestMethod.GET) 
-    public ModelAndView modifyCliente(@ModelAttribute("clienteModel")Cliente cliente)
+    public ModelAndView modifyCliente()
     {
     	ModelAndView mav = new ModelAndView("modifyCliente"); 
-    	mav.addObject("clienteModel", cliente);
+    	mav.addObject("clienteModel",  new Cliente());
 		
 		return mav;
 	
@@ -87,18 +87,22 @@ public class ClienteController {
 	
 	
 	@RequestMapping(value = "/saveCliente", method = RequestMethod.POST) 
-    public ModelAndView saveCliente(@RequestParam("from") String from, @ModelAttribute("clienteModel")Cliente cliente, Model model)
+    public ModelAndView saveCliente(@RequestParam("from") String from, @ModelAttribute("clienteModel")Cliente cliente)
     {
+		ModelAndView mav = new ModelAndView();
 		if (cliService.saveCliente(cliente)){
-			model.addAttribute("estado", "el cliente a sido guardado correctamente");
+			mav.addObject("estado", "el cliente a sido guardado correctamente");
 		}else{
-			model.addAttribute("estado", "el cliente a sido guardado correctamente");
+			mav.addObject("estado", "el cliente a no sido guardado correctamente");
 		}
 		
-		ModelAndView mav = new ModelAndView();
+		
 		if(from.equals("fromCoti")){
 			mav.addObject("clienteModel", cliente);
 			mav.setViewName("crearCotizacion");
+		}
+		if(from.equals("fromModi")){
+			mav.setViewName("modifyCliente");
 		}
 		else
 			mav.setViewName("addCliente");

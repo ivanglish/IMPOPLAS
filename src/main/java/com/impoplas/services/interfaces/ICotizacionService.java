@@ -8,6 +8,6 @@ import com.impoplas.model.DetalleProducto;
 
 public interface ICotizacionService {
 
-	public Cotizacion saveCotizacion(Cotizacion coti, Cliente cliente);
+	public long saveCotizacion(Cotizacion coti, Cliente cliente);
 
 }

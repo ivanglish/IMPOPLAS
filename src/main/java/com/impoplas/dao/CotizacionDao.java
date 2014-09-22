@@ -1,9 +1,11 @@
 package com.impoplas.dao;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.impoplas.dao.interfaces.ICotizacionDao;
 import com.impoplas.dao.interfaces.IProductDao;
+import com.impoplas.model.Cliente;
 import com.impoplas.model.Cotizacion;
 import com.impoplas.model.Product;
 @Repository
@@ -13,4 +15,6 @@ public class CotizacionDao extends BaseDAOImpl<Cotizacion> implements ICotizacio
 		super(Cotizacion.class);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 }
