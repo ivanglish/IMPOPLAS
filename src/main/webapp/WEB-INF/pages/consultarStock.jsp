@@ -10,7 +10,7 @@
 
 <body>
 
-
+		<jsp:include page="header.jsp" />
 
 		 <div class="modal fade" id="myPopover" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		          <div class="modal-dialog">
