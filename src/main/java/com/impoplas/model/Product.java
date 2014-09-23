@@ -26,7 +26,7 @@ public class Product {
 	
 	@Column(name = "medida", nullable = false)
 	private String productMedida;
-	
+
 
 	@Column(name = "precio", nullable = false)
 	private long productPrecio;

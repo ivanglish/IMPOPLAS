@@ -20,33 +20,6 @@ public class ProductService implements IProductService{
 	
 	private static List<Product> listpro = new ArrayList<Product>(); 
 	
-//	public Cotizacion getProductByCode(String codigo, long cantidad){
-//		
-//		
-//
-//		Product p=productDao.getProductrByCodigo(codigo);
-//		p.setCantidad(cantidad);
-//		p.setSubtotal(p.getProductPrecio()*cantidad);
-//		
-//		DetalleProducto detalleProducto = new DetalleProducto();
-//		detalleProducto.setCantidad(cantidad);
-//		detalleProducto.setSubtotal(p.getProductPrecio()*cantidad);
-//		detalleProducto.setProduct(p);
-//
-//
-//		listpro.add(p);
-//		Cotizacion cotizacion = new Cotizacion();
-//		cotizacion.setTotal(0);
-//		
-//		for (Product product : listpro) {
-//			
-//			cotizacion.setTotal(product.getSubtotal()+cotizacion.getTotal());
-//		}
-//
-//		cotizacion.setProductoDetalle(listpro);
-//
-//		return cotizacion;
-//	}
 	
 	public Cotizacion stripProduct(String productDetails, long cantidad){
 		

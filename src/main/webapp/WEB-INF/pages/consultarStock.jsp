@@ -47,17 +47,17 @@
         
         
         
-        <form class="form-inline search-form" role="form" onsubmit="return false" action="#" accept-charset="UTF-8" style="margin-top:100px;">
+        <form class="form-inline search-form" action="/IMPOPLAS/consultarStockByProduct"  style="margin-top:100px;">
 			<div class="form-group">
 			<label class="control-label hidden-xs" for="codigo">Código de Producto</label>
 			</div>
 			<div class="form-group">
-			<input id="codigo" class="form-control" type="text" placeholder="Ingrese Código" required="required">
+			<input id="codigo" name="codigo" class="form-control" type="text" placeholder="Ingrese Código" required="required">
 			</div>
-			<button id="btnSearch" class="btn btn-primary buscar" type="button">Buscar</button>
-			<button id="btnAdvanceSearch" class="btn btn-default buscar" type="button">Busqueda Avanzada</button>
+			<button id="btnSearch" class="btn btn-primary buscar" type="submit">Buscar</button>
+			<!--button id="btnAdvanceSearch" class="btn btn-default buscar" type="button">Busqueda Avanzada</button-->
 			<div class="form-group col-sm-offset-1">
-			<span id="productName">TEE 90º PE100 SDR17 T.F 63mm</span>
+			<span id="productName">${stockModel[0].product.productNombre}</span>
 			</div>
 		</form>
 			<div id="ResultsDisplay">
@@ -65,34 +65,40 @@
 					<div class="col-md-6">
 						<h3>Datos del Producto</h3>
 						<div id="info-producto">
-							<table class="table table-bordered">
-							<tbody>
-							<tr>
-							<th>Código Imp.</th>
-							<td>235043</td>
-							</tr>
-							<tr>
-							<th>Hiper Familia</th>
-							<td>VENTAS</td>
-							</tr>
-							<tr>
-							<th>Familia</th>
-							<td>TUBERIA Y FITTINGS</td>
-							</tr>
-							<tr>
-							<th>Sub Familia</th>
-							<td>HDPE</td>
-							</tr>
-							<tr>
-							<th>Marca</th>
-							<td>PLASTITALIA</td>
-							</tr>
-							<tr id="precio_promedio" class="active" style="display: none;">
-							<th>Costo Promedio</th>
-							<td>$ 1.644,97</td>
-							</tr>
-							</tbody>
-							</table>
+						
+						 <c:choose>
+							<c:when test="${empty stockModel}">
+								
+							</c:when>
+							<c:otherwise>
+			                      <c:forEach var="item" items="${stockModel}">    
+										<table class="table table-bordered">
+										<tbody>
+										<tr>
+										<th>Nombre</th>
+										<td>${item.product.productNombre}</td>
+										</tr>
+										<tr>
+										<th>Medida</th>
+										<td>${item.product.productMedida}</td>
+										</tr>
+										<tr>
+										<th>Bodega</th>
+										<td>${item.bodega.id}</td>
+										</tr>
+										<tr>
+										<th>Cantidad</th>
+										<td>${item.cantidad}</td>
+										</tr>
+										<tr id="precio_promedio" class="active" style="display: none;">
+										<th>Costo Promedio</th>
+										<td>${item.product.productPrecio}</td>
+										</tr>
+										</tbody>
+										</table>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 					</div>
 
 				</div>
