@@ -11,41 +11,6 @@
 <body>
 
 		<jsp:include page="header.jsp" />
-
-		 <div class="modal fade" id="myPopover" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		          <div class="modal-dialog">
-		            <div class="modal-content">
-		              <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" id="H1">Buscar productos.</h4>
-		                  <section class="col-lg-5xx">
-		                      <label>Nombre</label>
-		                  <input class="form-control" type="text" id="nombre_buscar" placeholder="Buscar por nombre..."  autocomplete="off">
-		                  </section>
-		                  <section class="col-lg-5xx">
-		                    <label>Marca</label>
-		                    <input class="form-control" type="text" id="marca" placeholder="Buscar por marca..." autocomplete="off">
-		                  </section>
-		              </div>
-		              <div class="modal-body">
-		               <span id="myPopoverError">
-		               </span>
-		                  <script id="advanceResultTmpl" type="text/x-jquery-tmpl">
-                  <a class="list-group-item" href="javascript:;" onclick="copyTo('${sku}')">${sku} - ${nombre} (${marca})</a>
-                  </script>
-		                  <div class="list-group tt-dropdown-result" id="advanceResult">
-		                  </div>
-		              </div>
-		              <div class="modal-footer">
-		                    <button type="button" class="btn btn-primary" id="btnAdvanceSearchResult">Buscar</button>
-			                <button type="button" class="btn btn-default"  data-dismiss="modal">Cancelar</button>
-		              </div>
-		            </div><!-- /.modal-content -->
-		          </div><!-- /.modal-dialog -->
-		        </div><!-- /.modal -->
-		        
-        
-        
         
         <form class="form-inline search-form" action="/IMPOPLAS/consultarStockByProduct"  style="margin-top:100px;">
 			<div class="form-group">
@@ -56,9 +21,6 @@
 			</div>
 			<button id="btnSearch" class="btn btn-primary buscar" type="submit">Buscar</button>
 			<!--button id="btnAdvanceSearch" class="btn btn-default buscar" type="button">Busqueda Avanzada</button-->
-			<div class="form-group col-sm-offset-1">
-			<span id="productName">${stockModel[0].product.productNombre}</span>
-			</div>
 		</form>
 			<div id="ResultsDisplay">
 				<div class="row">
@@ -84,7 +46,7 @@
 										</tr>
 										<tr>
 										<th>Bodega</th>
-										<td>${item.bodega.id}</td>
+										<td>${item.bodega.nombre}</td>
 										</tr>
 										<tr>
 										<th>Cantidad</th>
@@ -105,10 +67,11 @@
 				<div class="col-md-5 col-md-offset-1">
 					<h3>Valores de Venta</h3>
 					<table class="table table-bordered">
-						<tbody id="info-ventas"></tbody>
+						<tbody id="info-ventas"><H1>$ ${stockModel[0].product.productPrecio}</H1></tbody>
 					</table>
 				</div>
 				<div class="col-sm-12 gral-info">
+					<H3>CANTIDAD TOTAL: ${cantidadTotal}</H3>
 				</div>
 			</div>
 		</div>
