@@ -31,6 +31,10 @@ public class Product {
 	@Column(name = "precio", nullable = false)
 	private long productPrecio;
 	
+	@Column(name = "familia", nullable = false)
+	private String productFamilia;
+	
+
 	@Transient
 	private long cantidad;
 	
@@ -83,6 +87,14 @@ public class Product {
 
 	public void setSubtotal(long subtotal) {
 		this.subtotal = subtotal;
+	}
+	
+	public String getProductFamilia() {
+		return productFamilia;
+	}
+
+	public void setProductFamilia(String productFamilia) {
+		this.productFamilia = productFamilia;
 	}
 
 }
