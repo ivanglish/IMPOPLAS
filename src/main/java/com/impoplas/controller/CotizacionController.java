@@ -14,10 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.impoplas.dao.interfaces.IProductDao;
 import com.impoplas.model.Cliente;
 import com.impoplas.model.Cotizacion;
+import com.impoplas.model.Inventario;
 import com.impoplas.model.Product;
 import com.impoplas.services.interfaces.IClienteService;
 import com.impoplas.services.interfaces.ICotizacionService;
 import com.impoplas.services.interfaces.IProductService;
+import com.impoplas.services.interfaces.IStockService;
 
 
 @Controller
@@ -34,6 +36,9 @@ public class CotizacionController {
 	private IProductService proService; 
 	
 	@Autowired
+	IStockService stockService;
+	
+	@Autowired
 	private IProductDao proDao; 
 	
 	@ModelAttribute("productModelList")
@@ -47,6 +52,7 @@ public class CotizacionController {
 		Cliente cliente = new Cliente();
 		Cotizacion cotizacion = new Cotizacion();
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
+    	mav.addObject("stock", "");
     	mav.addObject("clienteModel", cliente);
     	mav.addObject("cotizacionModel", cotizacion);
 		
@@ -69,8 +75,17 @@ public class CotizacionController {
 	@RequestMapping(value = "/addProduct", method = RequestMethod.GET) 
     public ModelAndView addProduct(@ModelAttribute("clienteModel") Cliente cliente, @RequestParam("productList") String productDetails, @RequestParam("cantidad") String cantidad)
     {
+		long cantidadTotal=0;
 		Cotizacion cotizacion = proService.stripProduct(productDetails, Long.valueOf(cantidad).longValue());
+		List<Inventario> list = stockService.getProductStockByCode(proService.stripCodigo(productDetails));
+		for (Inventario inventario : list) {
+			cantidadTotal+=inventario.getCantidad();
+		}
+		
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
+    	if (cantidadTotal<Long.valueOf(cantidad).longValue()){
+    		mav.addObject("stock", "no");
+    	}
     	mav.addObject("clienteModel", cliente);
     	mav.addObject("cotizacionModel", cotizacion);
 		

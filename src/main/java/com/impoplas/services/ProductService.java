@@ -20,6 +20,12 @@ public class ProductService implements IProductService{
 	
 	private static List<Product> listpro = new ArrayList<Product>(); 
 	
+	public String stripCodigo(String productDetails){
+		
+		String[] details= productDetails.split(",");
+		return details[0];
+	
+	}
 	
 	public Cotizacion stripProduct(String productDetails, long cantidad){
 		

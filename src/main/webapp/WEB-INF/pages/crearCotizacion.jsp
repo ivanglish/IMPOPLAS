@@ -120,23 +120,31 @@
 							</c:when>
 							<c:otherwise>
 			                      <c:forEach var="item" items="${cotizacionModel.productoDetalle}">
-			                      	 <tr>
-			                          <td>
-			                              ${item.productNombre}
-			                          </td>
-			                          <td>
-			                              ${item.productMedida}
-			                          </td>
-			                          <td>
-			                               ${item.cantidad} 
-			                          </td>
-			                          <td>
-			                               ${item.productPrecio} 
-			                          </td>
-			                          <td>
-			                               ${item.subtotal} 
-			                          </td>
-			                      </tr>
+			                      	<c:choose>
+										<c:when test="${stock == 'no'}">
+				                      		 <tr style="color:red;" data-toggle="tooltip" data-placement="top" title="No hay suficiente Stock">
+				                  		</c:when>
+				                  		<c:otherwise>
+				                  			<tr>
+				                  		</c:otherwise>
+				                  	</c:choose>
+				                          <td>
+				                              ${item.productNombre}
+				                          </td>
+				                          <td>
+				                              ${item.productMedida}
+				                          </td>
+				                          <td>
+				                               ${item.cantidad} 
+				                          </td>
+				                          <td>
+				                               ${item.productPrecio} 
+				                          </td>
+				                          <td>
+				                               ${item.subtotal} 
+				                          </td>
+				                      </tr>
+			                      
 			                      
 			                      </c:forEach>
 			                </c:otherwise>
