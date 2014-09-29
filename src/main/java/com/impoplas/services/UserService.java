@@ -3,9 +3,7 @@ package com.impoplas.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.impoplas.dao.interfaces.IRolDao;
 import com.impoplas.dao.interfaces.IUserDao;
-import com.impoplas.model.Roles;
 import com.impoplas.model.User;
 import com.impoplas.services.interfaces.IUserService;
 

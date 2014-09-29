@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.impoplas.dao.interfaces.IProductDao;
 import com.impoplas.model.Inventario;
+import com.impoplas.model.Product;
 import com.impoplas.services.interfaces.IStockService;
 
 @Controller
@@ -19,6 +21,14 @@ public class StockController {
 	
 	@Autowired
 	IStockService stockService;
+	
+	@Autowired
+	private IProductDao proDao; 
+	
+	@ModelAttribute("productModelList")
+	 public List<Product> getAllProducts() {
+       return proDao.getAll();
+   }
 	
 	@RequestMapping(value = "/consultarStock", method = RequestMethod.GET) 
     public ModelAndView consultarStock()
@@ -29,10 +39,11 @@ public class StockController {
     }	
 	
 	@RequestMapping(value = "/consultarStockByProduct", method = RequestMethod.GET) 
-    public ModelAndView consultarStockByProduct(@RequestParam("codigo") String codigo)
+    public ModelAndView consultarStockByProduct(@RequestParam("codigo") String codigo, @RequestParam("productList") String codigoByName)
     {	
 		long cantidadTotal=0;
-		List<Inventario> list = stockService.getProductStockByCode(codigo);
+		String codigoFinal= (codigo=="") ? codigoByName: codigo;
+		List<Inventario> list = stockService.getProductStockByCode(codigoFinal);
 		for (Inventario inventario : list) {
 			cantidadTotal+=inventario.getCantidad();
 		}

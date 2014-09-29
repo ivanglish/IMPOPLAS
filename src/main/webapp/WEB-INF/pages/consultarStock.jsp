@@ -3,10 +3,16 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html class="no-js" lang="en">
 <head>
-	<title>home</title>
+	<title>Stock</title>
+	<script src="<c:url value="/resources/js/jquery-2.0.3.min.js"/>" type="text/javascript"></script>
 	<link href="<c:url value="/resources/bootstrap-3.0.3/css/bootstrap.min.css"/>" rel="stylesheet"/>
-	
+	<link href="<c:url value="/resources/css/select2.css"/>" rel="stylesheet"/>
+	<script src="<c:url value="/resources/js/select2.js"/>"></script>
+    
 </head>
+    <script>
+		$(document).ready(function() { $("#productList").select2(); });
+	</script>
 
 <body>
 
@@ -17,8 +23,18 @@
 			<label class="control-label hidden-xs" for="codigo">Código de Producto</label>
 			</div>
 			<div class="form-group">
-			<input id="codigo" name="codigo" class="form-control" type="text" placeholder="Ingrese Código" required="required">
+			<input id="codigo" name="codigo" class="form-control" type="text" placeholder="Ingrese Código">
 			</div>
+			 <select id="productList" name="productList" class="selectpicker" width="80px;">
+			 		<option value="0" selectd>-- Elija un producto --</option>
+					<c:choose>
+						<c:when test="${not empty productModelList}">
+							<c:forEach var="item" items="${productModelList}">
+										<option value="${item.productCodigo}">${item.productNombre} ${item.productMedida}</option>
+							</c:forEach>
+						</c:when>
+					</c:choose>
+		    </select>
 			<button id="btnSearch" class="btn btn-primary buscar" type="submit">Buscar</button>
 			<!--button id="btnAdvanceSearch" class="btn btn-default buscar" type="button">Busqueda Avanzada</button-->
 		</form>

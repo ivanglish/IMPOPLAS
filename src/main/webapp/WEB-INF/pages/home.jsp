@@ -42,18 +42,29 @@
     </div>
 
     <div class="container">    
-    	<c:forEach var="item" items="${userModel.rol.permisos}">
-    		<div class="row feature">
-		        <div class="col-xs-12 col-sm-4 cfeature infos">
-		            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
-		        </div>
-		        <div class="col-xs-12 col-sm-4 cfeature free">
-	            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
-		        </div>
-		        <div class="col-xs-12 col-sm-4 cfeature standard">
-		            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
-		        </div>
-		    </div>
+    	<c:forEach var="item" items="${userModel.rol.permisos}" varStatus="theCount">
+    	
+    		 <c:if test="${theCount.count % 3 == 1 || theCount.count == 1}">
+   				<div class="row feature">
+   			 </c:if>
+   			    <c:if test="${(theCount.count ==1) || (theCount.count ==4) || (theCount.count ==7) || (theCount.count ==10) || (theCount.count ==13) || (theCount.count ==16)}">
+			        <div class="col-xs-12 col-sm-4 cfeature infos">
+			            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
+			        </div>
+			    </c:if>
+			     <c:if test="${(theCount.count ==2) || (theCount.count ==5) || (theCount.count ==8) || (theCount.count ==11) || (theCount.count ==14) || (theCount.count ==17)}">
+			        <div class="col-xs-12 col-sm-4 cfeature free">
+		            	<a href="<c:url value="${item.url}"/>">${item.permiso}</a>
+			        </div>
+			    </c:if>
+			      <c:if test="${(theCount.count ==3) || (theCount.count ==6) || (theCount.count ==9) || (theCount.count ==12) || (theCount.count ==15) || (theCount.count ==18)}">
+			        <div class="col-xs-12 col-sm-4 cfeature standard">
+			            <a href="<c:url value="${item.url}"/>">${item.permiso}</a>
+			        </div>
+			     </c:if>
+			<c:if test="${theCount.count % 3 == 0}">
+		    	</div>
+		    </c:if>
 	    </c:forEach>
 	</div>	
 </body>

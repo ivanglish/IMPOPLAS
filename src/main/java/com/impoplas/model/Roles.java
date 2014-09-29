@@ -1,6 +1,8 @@
 package com.impoplas.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -32,7 +34,7 @@ public class Roles {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "role_permisos", joinColumns = { @JoinColumn(name = "id_role") }, inverseJoinColumns = { @JoinColumn(name = "id_permiso") })
-	private Set<Permisos> permisos = new HashSet<Permisos>();
+	private List<Permisos> permisos = new ArrayList<Permisos>();
 	
 	//@OneToMany(fetch = FetchType.LAZY)
 	//private Set<Permisos> permisos = new HashSet<Permisos>();
@@ -53,13 +55,12 @@ public class Roles {
 		this.rol = rol;
 	}
 	
-	public Set<Permisos> getPermisos() {
+	public List<Permisos> getPermisos() {
 		return permisos;
 	}
 
-	public void setPermisos(Set<Permisos> permisos) {
+	public void setPermisos(List<Permisos> permisos) {
 		this.permisos = permisos;
 	}
-
 
 }

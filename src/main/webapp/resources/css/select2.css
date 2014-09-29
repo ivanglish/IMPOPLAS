@@ -129,7 +129,7 @@ html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
     min-height: 100%;
     min-width: 100%;
     height: auto;
-    width: auto;
+    width: 370px;
     opacity: 0;
     z-index: 9998;
     /* styles required for IE to work */

@@ -205,10 +205,11 @@
 		            		<td>
 				               <label class="col-sm-2 control-label">Product:</label>     
 		                       <select id="productList" name="productList" class="selectpicker">
+		                       			<option value="0" selectd>-- Elija un producto --</option>
 										<c:choose>
 											<c:when test="${not empty productModelList}">
 												<c:forEach var="item" items="${productModelList}">
-															<option value="${item.productCodigo},${item.productNombre},${item.productMedida},${item.productPrecio}" selected>${item.productNombre} ${item.productMedida}</option>
+															<option value="${item.productCodigo},${item.productNombre},${item.productMedida},${item.productPrecio}">${item.productNombre} ${item.productMedida}</option>
 												</c:forEach>
 											</c:when>
 										</c:choose>
