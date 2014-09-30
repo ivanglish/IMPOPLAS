@@ -10,6 +10,21 @@
 	<script src="<c:url value="/resources/js/select2.js"/>"></script>
     <script>
 		$(document).ready(function() { $("#productList").select2(); });
+
+	function changeFamilia(obj){
+		$.ajax({ type: "GET",   
+		         url: "changeProductsByFamily/",   
+		         cache: false ,
+		         data:'familia=' + obj.value,
+		 		 success: function(response){
+			 		 $("#productList").refresh();
+
+		 		 },
+		 		 error: function(){		
+			 		 				
+				});	
+		}
+	}
 	</script>
 </head>
     <body>
@@ -121,8 +136,8 @@
 							<c:otherwise>
 			                      <c:forEach var="item" items="${cotizacionModel.productoDetalle}">
 			                      	<c:choose>
-										<c:when test="${stock == 'no'}">
-				                      		 <tr style="color:red;" data-toggle="tooltip" data-placement="top" title="No hay suficiente Stock">
+										<c:when test="${stock != ' '}">
+				                      		 <tr style="color:red;" data-toggle="tooltip" data-placement="top" title="No hay suficiente Stock. Faltan ${stock} unidades">
 				                  		</c:when>
 				                  		<c:otherwise>
 				                  			<tr>
@@ -209,11 +224,21 @@
 				                <h3 style="margin-left:80px;">Agregar Productos</h3>
 				            </td>
 				        </tr>
+				        <tr>
+		            		<td>
+		            			<label class="col-sm-2 control-label">Familia Producto:</label>
+				        		<select id="productFamilyList" name="productFamilyList" class="selectpicker" onchange="changeFamilia(this);">
+		                       			<option value="1" selected>Tuberia</option>
+		                       			<option value="2">Fitting Hidraulico</option>
+		                       			<option value="3">Salida Estanque</option>
+							   </select>
+				           </td>
+				        </tr>
 		            	<tr>
 		            		<td>
-				               <label class="col-sm-2 control-label">Product:</label>     
+				               <label class="col-sm-2 control-label">Producto:</label>     
 		                       <select id="productList" name="productList" class="selectpicker">
-		                       			<option value="0" selectd>-- Elija un producto --</option>
+		                       			<option value="0" selected>-- Elija un producto --</option>
 										<c:choose>
 											<c:when test="${not empty productModelList}">
 												<c:forEach var="item" items="${productModelList}">
@@ -249,7 +274,7 @@
 			                        <input name="medioPago" type="text" ></input>
 			                    </div>
 	            			</td>
-	            			<td></td>
+	            			<td><button type="submit" class="btn btn-success btn-lg" style="margin-left:128px;">Crear Cotizacion</button></td>
 	            		</tr>
 	            		<tr>
 	            			<td>
@@ -305,7 +330,7 @@
 			                     </div>
 	            			</td>
 	            			  <td>
-					        	<button type="submit" class="btn btn-success btn-lg" style="margin-left:128px;">Crear Cotizacion</button>
+					        	
 					        </td>
 	            		</tr>
 	            	</table>

@@ -1,13 +1,14 @@
 package com.impoplas.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
 
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Component;
 @Table(name = "product")
 public class Product {
 
-	
 	@Id
 	@Column(name = "codigo", nullable = false)
 	private String productCodigo;
@@ -27,12 +27,12 @@ public class Product {
 	@Column(name = "medida", nullable = false)
 	private String productMedida;
 
-
 	@Column(name = "precio", nullable = false)
 	private long productPrecio;
 	
-	@Column(name = "familia", nullable = false)
-	private String productFamilia;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_familia")
+	private FamiliaProduct productFamilia;
 	
 
 	@Transient
@@ -88,13 +88,15 @@ public class Product {
 	public void setSubtotal(long subtotal) {
 		this.subtotal = subtotal;
 	}
-	
-	public String getProductFamilia() {
+
+	public FamiliaProduct getProductFamilia() {
 		return productFamilia;
 	}
 
-	public void setProductFamilia(String productFamilia) {
+	public void setProductFamilia(FamiliaProduct productFamilia) {
 		this.productFamilia = productFamilia;
 	}
+	
+
 
 }

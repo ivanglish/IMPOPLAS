@@ -41,9 +41,26 @@ public class CotizacionController {
 	@Autowired
 	private IProductDao proDao; 
 	
+	private int familia = 1;
+	
+//	@ModelAttribute("productModelList")
+//	 public List<Product> getAllProducts() {
+//        return proDao.getAll();
+//    }
+	
 	@ModelAttribute("productModelList")
-	 public List<Product> getAllProducts() {
-        return proDao.getAll();
+	 public List<Product> getAllProductsByFamilia() {
+       return proDao.getProductrByFamilia(familia);
+   }
+	
+	@RequestMapping(value = "/changeProductsByFamily", method = RequestMethod.GET) 
+    public ModelAndView changeAllProductsByFamilia(@RequestParam("familia") String familia)
+    {
+		this.familia = Integer.valueOf(familia);
+		getAllProductsByFamilia();
+    	ModelAndView mav = new ModelAndView("crearCotizacion"); 
+		return mav;
+	
     }
 	
 	@RequestMapping(value = "/crearCotizacion", method = RequestMethod.GET) 
@@ -84,7 +101,7 @@ public class CotizacionController {
 		
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
     	if (cantidadTotal<Long.valueOf(cantidad).longValue()){
-    		mav.addObject("stock", "no");
+    		mav.addObject("stock", Long.valueOf(cantidad).longValue()-cantidadTotal);
     	}
     	mav.addObject("clienteModel", cliente);
     	mav.addObject("cotizacionModel", cotizacion);
