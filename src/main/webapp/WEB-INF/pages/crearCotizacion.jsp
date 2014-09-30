@@ -210,13 +210,25 @@
             </div>
         </form:form>
             
-             <!-- Changed from `hidden` to `auto`. -->
+        <!-- Changed from `hidden` to `auto`. -->
         <div style="overflow:auto;width:100%;">
 
             <!-- This is the div that does the trick: -->
             <div style="width:1000px;">
-
             <div style="display:inline-block;width:600px">
+            	<form:form class="form-horizontal" method="GET" commandName="clienteModel" action="/IMPOPLAS/changeProductsByFamily">
+            		<label class="col-sm-2 control-label">Familia Producto:</label>
+	        		<select id="productFamilyList" name="productFamilyList" onchange="submit();">
+	        					<option value="0" selected>-- Elija una familia --</option>
+                      			<c:choose>
+									<c:when test="${not empty familiaModelList}">
+										<c:forEach var="item" items="${familiaModelList}">
+													<option value="${item.idFamilia}">${item.nombreFamilia}</option>
+										</c:forEach>
+									</c:when>
+								</c:choose>		
+				   </select>
+				</form:form>	   
 	            <form:form class="form-horizontal" method="GET" commandName="clienteModel" action="/IMPOPLAS/addProduct">
 		            <table width="100%">
 		            	<tr>
@@ -226,12 +238,7 @@
 				        </tr>
 				        <tr>
 		            		<td>
-		            			<label class="col-sm-2 control-label">Familia Producto:</label>
-				        		<select id="productFamilyList" name="productFamilyList" class="selectpicker" onchange="changeFamilia(this);">
-		                       			<option value="1" selected>Tuberia</option>
-		                       			<option value="2">Fitting Hidraulico</option>
-		                       			<option value="3">Salida Estanque</option>
-							   </select>
+		            			
 				           </td>
 				        </tr>
 		            	<tr>

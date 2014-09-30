@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.impoplas.dao.interfaces.IFamiliaDAO;
 import com.impoplas.dao.interfaces.IProductDao;
 import com.impoplas.model.Cliente;
 import com.impoplas.model.Cotizacion;
+import com.impoplas.model.FamiliaProduct;
 import com.impoplas.model.Inventario;
 import com.impoplas.model.Product;
 import com.impoplas.services.interfaces.IClienteService;
@@ -41,24 +43,25 @@ public class CotizacionController {
 	@Autowired
 	private IProductDao proDao; 
 	
-	private int familia = 1;
+	@Autowired
+	private IFamiliaDAO familiaDao;
 	
-//	@ModelAttribute("productModelList")
-//	 public List<Product> getAllProducts() {
-//        return proDao.getAll();
-//    }
+	@ModelAttribute("familiaModelList")
+	 public List<FamiliaProduct> getAllFamilias() {
+        return familiaDao.getAll();
+    }
 	
 	@ModelAttribute("productModelList")
 	 public List<Product> getAllProductsByFamilia() {
-       return proDao.getProductrByFamilia(familia);
+       return proDao.getProductrByFamilia(1);
    }
 	
 	@RequestMapping(value = "/changeProductsByFamily", method = RequestMethod.GET) 
-    public ModelAndView changeAllProductsByFamilia(@RequestParam("familia") String familia)
+    public ModelAndView changeAllProductsByFamilia(@RequestParam("productFamilyList") String familia)
     {
-		this.familia = Integer.valueOf(familia);
-		getAllProductsByFamilia();
+		List<Product> list = proDao.getProductrByFamilia(Integer.valueOf(familia));
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
+    	mav.addObject("productModelList", list);
 		return mav;
 	
     }
