@@ -38,6 +38,16 @@ public class StockController {
 	
     }	
 	
+	@RequestMapping(value = "/ingresarProductos", method = RequestMethod.GET) 
+    public ModelAndView ingresarProductos()
+    {
+		Product product = new Product();
+    	ModelAndView mav = new ModelAndView("/ingresarProductos");
+    	mav.addObject("productModel", product);
+		return mav;
+	
+    }	
+	
 	@RequestMapping(value = "/consultarStockByProduct", method = RequestMethod.GET) 
     public ModelAndView consultarStockByProduct(@RequestParam("codigo") String codigo, @RequestParam("productList") String codigoByName)
     {	
