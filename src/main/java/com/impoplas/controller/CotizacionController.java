@@ -62,6 +62,7 @@ public class CotizacionController {
 		List<Product> list = proDao.getProductrByFamilia(Integer.valueOf(familia));
     	ModelAndView mav = new ModelAndView("crearCotizacion"); 
     	mav.addObject("productModelList", list);
+    	mav.addObject("familiaElegida", familia);
 		return mav;
 	
     }

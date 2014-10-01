@@ -216,14 +216,20 @@
             <!-- This is the div that does the trick: -->
             <div style="width:1000px;">
             <div style="display:inline-block;width:600px">
-            	<form:form class="form-horizontal" method="GET" commandName="clienteModel" action="/IMPOPLAS/changeProductsByFamily">
+            	<form:form class="form-horizontal" method="GET" action="/IMPOPLAS/changeProductsByFamily">
             		<label class="col-sm-2 control-label">Familia Producto:</label>
 	        		<select id="productFamilyList" name="productFamilyList" onchange="submit();">
-	        					<option value="0" selected>-- Elija una familia --</option>
                       			<c:choose>
 									<c:when test="${not empty familiaModelList}">
 										<c:forEach var="item" items="${familiaModelList}">
-													<option value="${item.idFamilia}">${item.nombreFamilia}</option>
+												<c:choose>
+													<c:when test="${item.idFamilia == familiaElegida}">
+														<option value="${item.idFamilia}" selected>${item.nombreFamilia}</option>
+													</c:when>
+													<c:otherwise>
+														<option value="${item.idFamilia}">${item.nombreFamilia}</option>
+													</c:otherwise>
+												</c:choose>
 										</c:forEach>
 									</c:when>
 								</c:choose>		
