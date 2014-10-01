@@ -18,7 +18,7 @@
 		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Caja</a></li>
 		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Facturacion</a></li>
 		        	<li><a href="<c:url value="/slide"/>"><span class="glyphicon glyphicon-play"></span> Reportes</a></li>
-		        	<li><a href="<c:url value="/IMPOPLAS/crearCotizacion"/>"><span class="glyphicon glyphicon-play"></span> Cotizacion</a></li>
+		        	<li><a href="<c:url value="/crearCotizacion"/>"><span class="glyphicon glyphicon-play"></span> Cotizacion</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"

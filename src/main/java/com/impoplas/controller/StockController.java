@@ -42,7 +42,7 @@ public class StockController {
     public ModelAndView ingresarProductos()
     {
 		Product product = new Product();
-    	ModelAndView mav = new ModelAndView("/ingresarProductos");
+    	ModelAndView mav = new ModelAndView("ingresarProductos");
     	mav.addObject("productModel", product);
 		return mav;
 	
